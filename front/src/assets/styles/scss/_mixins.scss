@@ -1,0 +1,31 @@
+@mixin flex-container($direction: column, $gap: 10px, $align-items: center, $justify-content: center) {
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;
+    align-items: $align-items;
+    justify-content: $justify-content;
+}
+
+@mixin text-base($color: var(--text-color), $font-family: $title-font, $font-weight: 400, $font-size: 30px) {
+    color: $color;
+    font-family: $font-family;
+    font-weight: $font-weight;
+    font-size: $font-size;
+}
+
+@mixin img-base($height: 30px, $width: 100%) {
+    height: $height;
+    width: $width;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@mixin icon-base($width, $height, $color) {
+    width: $width;
+    height: $height;
+    color: $color;
+    &:hover {
+        cursor: pointer;
+    }
+}

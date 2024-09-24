@@ -1,0 +1,17 @@
+.main-nav {
+    @include flex-container(row, 0px, center, space-between);
+    padding: 10px 60px;
+    div {
+        @include flex-container(row, 0px, center);
+        img {
+            @include img-base();
+        }
+        h1 {
+            @include text-base(var(--title-color), $font-weight: 300);
+        }
+    }
+}
+
+.icon {
+    @include icon-base(20px, 20px, var(--accent-color));
+}
