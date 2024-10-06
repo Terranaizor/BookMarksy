@@ -8,15 +8,15 @@
 
 :root {
   --background-color: #ffffff;
+  --footer-color: #f4f4f4;
   --secondary-color: #c7cfc8;
   --accent-color: #194f23;
   --separators-color: #194f2321;
   --shadow-color: #00000099;
   --title-color: #000000;
   --text-color: #000000;
-  --button-background-color: #ffffff;
+  --button-color: #194f23;
   --button-text-color: #ffffff;
-  --border-color: #ffffff;
 }
 
 body {
@@ -104,7 +104,7 @@ body {
 }
 
 h2 {
-  color: var(--text-color);
+  color: var(--title-color);
   font-family: "Merriweather", serif;
   font-weight: 400;
   font-size: 40px;
@@ -135,13 +135,9 @@ h2 {
 }
 .community-grid .community-grid--element img {
   height: 50px;
-  width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
   cursor: auto !important;
-}
-.community-grid .community-grid--element img:hover {
-  cursor: pointer;
 }
 .community-grid .community-grid--element p {
   color: var(--text-color);
@@ -150,4 +146,101 @@ h2 {
   font-size: 20px;
   text-align: center;
   line-height: 200%;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--footer-color);
+  padding: 40px 90px;
+  margin-top: 40px;
+}
+footer ul {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+footer li a {
+  color: var(--text-color);
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: start;
+  justify-content: center;
+}
+.footer-logo div {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-logo img {
+  height: 45px;
+  width: 30px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer-logo img:hover {
+  cursor: pointer;
+}
+.footer-logo h3 {
+  color: var(--title-color);
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+  font-size: 45px;
+}
+.footer-logo p {
+  padding-left: 30px;
+  color: var(--text-color);
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.auth-buttons .register {
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  width: 150px;
+  height: auto;
+  padding: 10px 15px;
+  border: 2px solid var(--button-color);
+  border-radius: 0;
+  cursor: pointer;
+}
+.auth-buttons .login {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  width: 150px;
+  height: auto;
+  padding: 10px 15px;
+  border: 2px solid var(--button-color);
+  border-radius: 0;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */

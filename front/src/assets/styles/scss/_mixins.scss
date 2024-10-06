@@ -30,3 +30,18 @@
         cursor: pointer;
     }
 }
+
+@mixin btn-base(
+    $width: 150px,
+    $height: auto,
+    $padding: 10px 15px,
+    $border: 2px solid var(--button-color),
+    $border-radius: 0
+) {
+    width: $width;
+    height: $height;
+    padding: $padding;
+    border: $border;
+    border-radius: $border-radius;
+    cursor: pointer;
+}
