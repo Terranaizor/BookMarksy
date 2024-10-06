@@ -1,0 +1,18 @@
+@import "./scss/base";
+@import "./scss/variables";
+@import "./scss/_themes.scss";
+@import "./scss/mixins";
+
+body {
+    background-color: var(--background-color);
+}
+
+.separator {
+    width: calc(100vw - 120px);
+    height: 1px;
+    border: 1px solid var(--separators-color);
+    margin: 0 auto;
+}
+
+@import "./scss/components/navbar";
+@import "./scss/pages/main-page";
