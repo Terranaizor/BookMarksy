@@ -16,6 +16,7 @@
 @mixin img-base($height: 30px, $width: 100%) {
     height: $height;
     width: $width;
+    object-fit: contain;
     &:hover {
         cursor: pointer;
     }

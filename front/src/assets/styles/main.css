@@ -48,6 +48,8 @@ body {
 .main-nav div img {
   height: 30px;
   width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .main-nav div img:hover {
   cursor: pointer;
@@ -99,4 +101,53 @@ body {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+
+h2 {
+  color: var(--text-color);
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-size: 40px;
+  text-align: center;
+  line-height: 200%;
+}
+
+.community-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px auto;
+  width: 85%;
+}
+.community-grid .community-grid--element {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  padding: 40px 10px;
+}
+.community-grid .community-grid--element:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease 0s;
+}
+.community-grid .community-grid--element img {
+  height: 50px;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  cursor: auto !important;
+}
+.community-grid .community-grid--element img:hover {
+  cursor: pointer;
+}
+.community-grid .community-grid--element p {
+  color: var(--text-color);
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+  line-height: 200%;
 }/*# sourceMappingURL=main.css.map */

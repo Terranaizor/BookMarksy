@@ -24,3 +24,40 @@
     user-select: none;
   }
 }
+
+h2{
+  @include text-base(var(--text-color), $text-font, $font-size: 40px);
+  text-align: center;
+  line-height: 200%;
+}
+
+.community-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px auto;
+  width: 85%;
+  
+  .community-grid--element {
+    @include flex-container(column, 20px, center, center);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    padding: 40px 10px;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.3s ease 0s;
+    }
+
+    img {
+      @include img-base(50px);
+      cursor: auto !important;
+    }
+
+    p {
+      @include text-base(var(--text-color), $text-font, $font-size: 20px);
+      text-align: center;
+      line-height: 200%;
+    }
+  }
+}
