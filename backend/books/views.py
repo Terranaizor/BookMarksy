@@ -7,17 +7,28 @@ from rest_framework import status
 from django.db.models import Q
 from rest_framework import generics
 from books.models import Book
-from books.serializers import BookListSerializer, BookDetailsSerializer
+from books.serializers import *
 from rest_framework.pagination import PageNumberPagination
+from django.urls import reverse
 
 class CatalogueLinksView(APIView):
     def get(self, request, *args, **kwargs):
         response_data = {
-            "new_books_url": "/api/books/new/",
-            "popular_books_url": "/api/books/popular/",
-            "catalogue_url": "/api/books/filtered/",
+            "newBooksUrl": request.build_absolute_uri(reverse('new-books')),
+            "popularBooksUrl": request.build_absolute_uri(reverse('popular-books')),
+            "catalogueBooksUrl": request.build_absolute_uri(reverse('filtered-books')),
+            "genresListUrl": request.build_absolute_uri(reverse('genres-list')),
+            "publishersListUrl": request.build_absolute_uri(reverse('publishers-list')),
         }
         return Response(response_data, status=status.HTTP_200_OK)
+
+class GenreListView(generics.ListAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = GenreListSerializer
+
+class PublisherListView(generics.ListAPIView):
+    queryset = Publisher.objects.all()
+    serializer_class = PublisherListSerializer
 
 class NewBooksView(generics.ListAPIView):
     serializer_class = BookListSerializer
