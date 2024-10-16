@@ -1,7 +1,7 @@
 import React from 'react';
 import BookMarksy from "../assets/images/BookMarksy.jpg"
 
-const Footer = () => {
+const Footer = ({ SetShowLogin, toggleLoginPopup, currentLoginState, SetCurrentLoginState }) => {
     return (
         <footer>
             <div className="footer-logo">
@@ -19,8 +19,14 @@ const Footer = () => {
             </ul>
 
             <div class="auth-buttons">
-                <button className="register">Register</button>
-                <button className="login">Log in</button>
+                <button className="register" onClick={() => {
+                    SetCurrentLoginState("Sign up");
+                    SetShowLogin(true); toggleLoginPopup();
+                }}>Sign up</button>
+                <button className="login" onClick={() => {
+                    SetCurrentLoginState("Log in");
+                    SetShowLogin(true); toggleLoginPopup();
+                }}>Log in</button>
             </div>
         </footer>
     );
