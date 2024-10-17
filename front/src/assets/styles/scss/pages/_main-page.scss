@@ -1,7 +1,7 @@
 .container {
   width: 50%;
   @include flex-container(column, 20px, center, space-between);
-  background-color: var(--background-color);
+  background-color: var(--section-bc-color);
   padding: 40px 10px;
   margin: 20px auto;
 
@@ -42,6 +42,7 @@ h2 {
     @include flex-container(column, 20px, center, center);
     border-radius: 10px;
     box-shadow: 0 4px 10px var(--shadow-color);
+    background-color: var(--section-bc-color);
     padding: 40px 10px;
 
     &:hover {

@@ -124,9 +124,9 @@ const LoginPopup = ({ SetShowLogin, toggleLoginPopup, currentLoginState, SetCurr
                             <input type={passwordType} onPaste={(e) => { e.preventDefault(); }} id="password" placeholder="Enter your password" value={loginData.password}
                                 onChange={handleChange} required />
                             {passwordType === "password"
-                                ? <FontAwesomeIcon icon={faEye}
+                                ? <FontAwesomeIcon icon={faEye} className='icon'
                                     onClick={() => togglePasswordVisibility()} />
-                                : <FontAwesomeIcon icon={faEyeSlash}
+                                : <FontAwesomeIcon icon={faEyeSlash} className='icon'
                                     onClick={() => togglePasswordVisibility()} />
                             }
                         </div>
@@ -139,9 +139,9 @@ const LoginPopup = ({ SetShowLogin, toggleLoginPopup, currentLoginState, SetCurr
                                 <input type={confirmPasswordType} id="confirmPassword" placeholder="Confirm your password" value={loginData.confirmPassword}
                                     onChange={handleChange} required onPaste={(e) => { e.preventDefault(); }} />
                                 {confirmPasswordType === "password"
-                                    ? <FontAwesomeIcon icon={faEye}
+                                    ? <FontAwesomeIcon icon={faEye} className='icon'
                                         onClick={() => toggleConfirmPasswordVisibility()} />
-                                    : <FontAwesomeIcon icon={faEyeSlash}
+                                    : <FontAwesomeIcon icon={faEyeSlash} className='icon'
                                         onClick={() => toggleConfirmPasswordVisibility()} />
                                 }
                             </div>
