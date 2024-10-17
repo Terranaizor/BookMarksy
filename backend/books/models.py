@@ -13,7 +13,6 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     description = models.TextField()
     genres = models.ManyToManyField(Genre)
-    cover = models.ImageField(upload_to='images/')
     readersTotal = models.PositiveIntegerField(default=0)
     readersWeek = models.PositiveIntegerField(default=0)
     releaseDate = models.DateField()
@@ -31,7 +30,9 @@ class Publisher(models.Model):
 class BookEdition(models.Model):
     book = models.ForeignKey(Book, related_name='editions', on_delete=models.CASCADE)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
-    number_pages = models.IntegerField()
+    numberPages = models.IntegerField()
+    readersTotal = models.PositiveIntegerField(default=0)
+    cover = models.ImageField(upload_to='images/', default='images/default_cover.jpg')
 
     def __str__(self):
         return f"{self.book.title} - {self.publisher.name} Edition"

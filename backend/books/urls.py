@@ -8,8 +8,8 @@ urlpatterns = [
     path('catalogue/links/', CatalogueLinksView.as_view(), name='catalogue-links'),
     path('books/new/', NewBooksView.as_view(), name='new-books'),
     path('books/popular/', PopularBooksView.as_view(), name='popular-books'),
-    path('books/filtered/', FilteredBooksView.as_view(), name='filtered-books'),
-    path('books/<int:pk>/', BookDetailsView.as_view(), name='book-detail'),
+    path('books/filtered/', FilteredBookEditionsView.as_view(), name='filtered-bookeditions'),
+    path('books/<int:pk>/', BookEditionDetailView.as_view(), name='bookedition-detail'),
     path('books/genres/', GenreListView.as_view(), name='genres-list'),
     path('books/publishers/', PublisherListView.as_view(), name='publishers-list'),
 ]
