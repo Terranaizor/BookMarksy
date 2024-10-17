@@ -1,5 +1,6 @@
 :root {
     --background-color: #ffffff;
+    --section-bc-color:#f8f8f8;
     --footer-color: #f4f4f4;
     --secondary-color: #c7cfc8;
     --accent-color: #194f23;
@@ -14,5 +15,45 @@
 
     --button-color: #194f23;
     --button-focus-color: #194f2324;
+    --button-text-color: #ffffff;
+}
+
+.dark{
+    --background-color: #1e1e1e;
+    --section-bc-color: #2a2a2a;
+    --footer-color: #333333;
+    --secondary-color: #444444;
+    --accent-color: #51a345;
+
+    --separators-color: #66c2a52d;
+    --shadow-color: #00000066;
+
+    --title-color: #ffffff;
+    --text-color: #e0e0e0;
+    --subtext-color: #b0b0b0;
+    --error-color: #ff6f6f;
+
+    --button-color: #51a345;
+    --button-focus-color: #66c2a524;
+    --button-text-color: #ffffff;
+}
+
+.pink{
+    --background-color: #f4ebeb;
+    --section-bc-color:#ecd9d9;
+    --footer-color: #ceb5b5;
+    --secondary-color: #cfc7c7;
+    --accent-color: #4f1919;
+
+    --separators-color: rgba(79, 25, 25, 0.129);
+    --shadow-color: #00000099;
+
+    --title-color: #000000;
+    --text-color: #000000;
+    --subtext-color: #222222;
+    --error-color: #bd0d0d;
+
+    --button-color: #4f1919;
+    --button-focus-color: #4f191924;
     --button-text-color: #ffffff;
 }

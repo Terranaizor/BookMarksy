@@ -6,8 +6,13 @@
   box-sizing: border-box;
 }
 
+.light, .pink, .dark {
+  background-color: var(--background-color);
+}
+
 :root {
   --background-color: #ffffff;
+  --section-bc-color:#f8f8f8;
   --footer-color: #f4f4f4;
   --secondary-color: #c7cfc8;
   --accent-color: #194f23;
@@ -19,6 +24,40 @@
   --error-color: #bd0d0d;
   --button-color: #194f23;
   --button-focus-color: #194f2324;
+  --button-text-color: #ffffff;
+}
+
+.dark {
+  --background-color: #1e1e1e;
+  --section-bc-color: #2a2a2a;
+  --footer-color: #333333;
+  --secondary-color: #444444;
+  --accent-color: #51a345;
+  --separators-color: #66c2a52d;
+  --shadow-color: #00000066;
+  --title-color: #ffffff;
+  --text-color: #e0e0e0;
+  --subtext-color: #b0b0b0;
+  --error-color: #ff6f6f;
+  --button-color: #51a345;
+  --button-focus-color: #66c2a524;
+  --button-text-color: #ffffff;
+}
+
+.pink {
+  --background-color: #f4ebeb;
+  --section-bc-color:#ecd9d9;
+  --footer-color: #ceb5b5;
+  --secondary-color: #cfc7c7;
+  --accent-color: #4f1919;
+  --separators-color: rgba(79, 25, 25, 0.129);
+  --shadow-color: #00000099;
+  --title-color: #000000;
+  --text-color: #000000;
+  --subtext-color: #222222;
+  --error-color: #bd0d0d;
+  --button-color: #4f1919;
+  --button-focus-color: #4f191924;
   --button-text-color: #ffffff;
 }
 
@@ -78,6 +117,41 @@ body {
   cursor: pointer;
 }
 
+.theme-select {
+  position: relative;
+  cursor: pointer;
+}
+
+.theme-select svg {
+  margin: 0 10px;
+  padding: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  border-radius: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  z-index: 1;
+  cursor: pointer;
+  background-color: var(--background-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--accent-color);
+  overflow: hidden;
+}
+
+.theme-select:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li:hover {
+  background-color: var(--section-bc-color);
+}
+
 .container {
   width: 50%;
   display: flex;
@@ -85,7 +159,7 @@ body {
   gap: 20px;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--background-color);
+  background-color: var(--section-bc-color);
   padding: 40px 10px;
   margin: 20px auto;
   border-radius: 2rem;
@@ -135,6 +209,7 @@ h2 {
   justify-content: center;
   border-radius: 10px;
   box-shadow: 0 4px 10px var(--shadow-color);
+  background-color: var(--section-bc-color);
   padding: 40px 10px;
 }
 .community-grid .community-grid--element:hover {
@@ -338,6 +413,7 @@ footer li a {
   padding: 12px 10px;
   border: 1px solid var(--button-color);
   border-radius: 4px;
+  background-color: var(--input-bc-color);
   color: var(--text-color);
   font-family: "Merriweather", serif;
   font-weight: 200;
