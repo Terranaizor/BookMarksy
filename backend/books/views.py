@@ -12,7 +12,7 @@ from rest_framework.pagination import PageNumberPagination
 from django.urls import reverse
 from django.db.models import Max, Subquery, OuterRef, F
 
-class CatalogueLinksView(APIView):
+class BooksLinksView(APIView):
     def get(self, request, *args, **kwargs):
         response_data = {
             "newBooksUrl": request.build_absolute_uri(reverse('new-books')),

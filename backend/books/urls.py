@@ -5,7 +5,7 @@ from books.views import *
 
 
 urlpatterns = [
-    path('catalogue/links/', CatalogueLinksView.as_view(), name='catalogue-links'),
+    path('books/links/', BooksLinksView.as_view(), name='books-links'),
     path('books/new/', NewBooksView.as_view(), name='new-books'),
     path('books/popular/', PopularBooksView.as_view(), name='popular-books'),
     path('books/filtered/', FilteredBookEditionsView.as_view(), name='filtered-bookeditions'),
