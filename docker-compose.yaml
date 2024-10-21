@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   backend:
     build:
@@ -13,22 +12,22 @@ services:
       - .env
     ports:
       - "8000:8000"
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
 
   # frontend:
   #   build:
   #     context: ./frontend
   #     dockerfile: Dockerfile
 
-  db:
-    image: postgres
-    restart: always
-    volumes:
-      - .dbdata:/var/lib/postgres/data
-    environment:
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-      PGDATA: /var/lib/postgresql/data/pgdata
-    ports:
-        - "${DB_PORT}:${DB_PORT}"
+  # db:
+  #   image: postgres
+  #   restart: always
+  #   volumes:
+  #     - .dbdata:/var/lib/postgres/data
+  #   environment:
+  #     POSTGRES_PASSWORD: ${DB_PASSWORD}
+  #     POSTGRES_DB: ${DB_NAME}
+  #     PGDATA: /var/lib/postgresql/data/pgdata
+  #   ports:
+  #       - "${DB_PORT}:${DB_PORT}"
