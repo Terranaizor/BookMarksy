@@ -25,7 +25,7 @@ export const DataProvider = ({ children }) => {
 
         if (!fullResponse) {
             fetchData();
-          }
+        }
     }, [])
 
     return (

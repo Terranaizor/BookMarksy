@@ -1,14 +1,33 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import MainPage from './pages/MainPage'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import LoginPopup from './components/LoginPopup'
 import { useTheme } from './context/ThemeContext'
+import { useData } from './context/DataContext'
+import { useDispatch } from 'react-redux'
+import { setLinksAction } from './store/actions/links.action'
 
 function App() {
   const { theme } = useTheme();
   const [showLogin, SetShowLogin] = useState(false);
   const [currentLoginState, SetCurrentLoginState] = useState("Sign up");
+
+  const { links, loading } = useData();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!loading) {
+      dispatch(setLinksAction({
+        newBooksUrl: links.newBooksUrl,
+        popularBooksUrl: links.popularBooksUrl,
+        catalogueBooksUrl: links.catalogueBooksUrl,
+        genresListUrl: links.genresListUrl,
+        publishersListUrl: links.publishersListUrl
+      }));
+    }
+
+  }, [links])
 
   const toggleLoginPopup = () => {
     if (!showLogin) {

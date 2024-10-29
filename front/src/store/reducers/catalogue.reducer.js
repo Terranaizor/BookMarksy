@@ -1,22 +1,31 @@
-import { DOWNLOAD_NEW_CATALOGUE_PAGE_TYPE, DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_TYPE } from "../actions/catalogue.reducer";
+import { DOWNLOAD_NEW_CATALOGUE_PAGE_TYPE, DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_TYPE, SET_CATALOGUE_DATA_LOADING } from "../actions/catalogue.action";
 
 const initialState = {
     currentPage: 1,
     previousPage: null,
     currentData: [],
-    previousData: []
+    previousData: [],
+    isLoading: false
 };
 
 const CatalogueReducer = (state = initialState, action) => {
     switch (action.type) {
         case DOWNLOAD_NEW_CATALOGUE_PAGE_TYPE: {
-            return initialState;
+            return {
+                ...state,
+                ...action.payload
+            };
         }
         case DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_TYPE: {
-            return initialState;
+            return state;
         }
+
+        case SET_CATALOGUE_DATA_LOADING: {
+            return { ...state, isLoading: action.payload };
+        }
+
         default:
-            return initialState;
+            return state;
     }
 }
 
@@ -24,5 +33,6 @@ export const getCurrentPageSelector = (state) => state.catalogueReducer.currentP
 export const getPreviousPageSelector = (state) => state.catalogueReducer.previousPage;
 export const getCurrentDataSelector = (state) => state.catalogueReducer.currentData;
 export const getPreviousDataSelector = (state) => state.catalogueReducer.previousData;
+export const getIsLoadindSelector = (state) => state.catalogueReducer.isLoading;
 
 export default CatalogueReducer;
