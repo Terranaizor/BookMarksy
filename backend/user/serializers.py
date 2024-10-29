@@ -39,10 +39,15 @@ class ProfileSerializer(serializers.ModelSerializer):
     
     def get_friends(self, obj):
         
+        
 
-class FriendsListSerializer(serializers.ModelSerializer):
-       
+class FriendsListSerializer(serializers.HyperlinkedModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+
+    class Meta:
+        model = Profile
+        fields = ['username', 'nickname', 'picture', 'url']
 
 
-class UserSerializer(serializers.ModelSerializer):
+# class UserSerializer(serializers.ModelSerializer):
     

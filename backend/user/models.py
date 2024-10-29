@@ -4,6 +4,7 @@ from books.models import BookEdition
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nickname = models.CharField(max_length=255)
     friends = models.ManyToManyField(User, related_name='friends')
     picture = models.ImageField(upload_to='images/', default='images/default-user.jpg')
     last_activity = models.DateTimeField(null=True)
