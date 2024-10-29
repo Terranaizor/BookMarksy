@@ -62,7 +62,7 @@ class PopularBooksView(generics.ListAPIView):
         return most_read_editions
 
 class FilteredBookEditionsPagination(PageNumberPagination):
-    page_size = 10
+    page_size = 5
 
 class FilteredBookEditionsView(generics.ListAPIView):
     serializer_class = BookEditionListSerializer
@@ -74,15 +74,28 @@ class FilteredBookEditionsView(generics.ListAPIView):
             edition_readers=F('readersTotal')
         ).order_by('-book_readers', '-edition_readers')
         search = self.request.query_params.get('search', None)
-        
+        genres = self.request.query_params.getlist('genres')
+        if genres:
+            genre_queries = [Q(book__genres__name__iexact=genre) for genre in genres]
+            # genre_filter = genre_queries.pop()
+            for query in genre_queries:
+                # genre_filter = genre_filter & query 
+                queryset = queryset.filter(query).distinct()
         if search:
             queryset = queryset.filter(
                 Q(book__title__icontains=search) |
-                Q(book__author__icontains=search) |
-                Q(book__genres__name__icontains=search)
+                Q(book__author__icontains=search)
             ).distinct()
         
         return queryset
+    
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        total_books = queryset.count()
+        response = super().list(request, *args, **kwargs)
+        
+        response.data['total_books'] = total_books
+        return response
 
 class BookEditionDetailView(generics.RetrieveAPIView):
     queryset = BookEdition.objects.all()
