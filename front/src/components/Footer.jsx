@@ -28,7 +28,7 @@ const Footer = ({ SetShowLogin, toggleLoginPopup, currentLoginState, SetCurrentL
                 <li className="nav-item"><a href="#" className="nav-link">About developers</a></li>
             </ul>
 
-            <div class="auth-buttons">
+            <div className="auth-buttons">
                 <button className="register" onClick={() => {
                     SetCurrentLoginState("Sign up");
                     SetShowLogin(true); toggleLoginPopup();
