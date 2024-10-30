@@ -8,7 +8,7 @@ import { DataProvider } from './context/DataContext.jsx';
 import store from './store/store.js';
 
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
+  <StrictMode>
     <DataProvider>
       <Provider store={store}>
         <ThemeProvider>
@@ -16,5 +16,5 @@ createRoot(document.getElementById('root')).render(
         </ThemeProvider>
       </Provider>
     </DataProvider>
-  // </StrictMode>
+  </StrictMode>
 )

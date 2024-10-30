@@ -1,15 +1,16 @@
 import React from 'react';
 
-const Book = ({url, title, author, rating, cover, publisher}) => {
+const Book = ({ title, author, rating, cover }) => {
     return (
-        <div key={url}>
-              <div style={{ 'display': 'flex', 'flexDirection': 'column', 'border':'3px solid red' }} key={url}>
-                    <h3>{title}</h3>
-                    <p>Author: {author}</p>
-                    <p>Rating: {rating}</p>
-                    <img src={cover} alt={`Cover of ${title}`} style={{ width: '100px', height: '150px' }} />
-                    <p>Publisher: {publisher}</p>
-                </div>
+        <div className='single-book-section'
+            style={{ 'display': 'flex', 'flexDirection': 'column', 'border': '3px solid red' }}>
+            <h4 className='single-book-title'>{title}</h4>
+            <p className='single-book-text'>Author: {author}</p>
+            <img className='single-book-img'
+                src={cover}
+                alt={`Cover of ${title}`}
+                style={{ width: '100px', height: '150px' }} />
+            <p className='single-book-text'>Rating: {rating}</p>
         </div>
     );
 };

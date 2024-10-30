@@ -1,8 +1,6 @@
 import { Fragment, useEffect, useState } from 'react'
 import MainPage from './pages/MainPage'
-import NavBar from './components/NavBar'
-import Footer from './components/Footer'
-import LoginPopup from './components/LoginPopup'
+import { NavBar, Footer, LoginPopup } from './components/'
 import { useTheme } from './context/ThemeContext'
 import { useData } from './context/DataContext'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,7 +12,7 @@ function App() {
   const { theme } = useTheme();
   const [showLogin, SetShowLogin] = useState(false);
   const [currentLoginState, SetCurrentLoginState] = useState("Sign up");
-  const { links, loading } = useData();
+  const { links, loading, initialCataloguePage } = useData();
 
   const dispatch = useDispatch();
   const catalogueBooksUrl = useSelector(getCatalogueBooksUrlSelector);
@@ -27,23 +25,15 @@ function App() {
         catalogueBooksUrl: links.catalogueBooksUrl,
         genresListUrl: links.genresListUrl,
         publishersListUrl: links.publishersListUrl
- 
       }));
-      if (catalogueBooksUrl) { dispatch(getCatalogueThunk(catalogueBooksUrl)); }
+      if (catalogueBooksUrl) { dispatch(getCatalogueThunk(catalogueBooksUrl, initialCataloguePage)); }
     }
-
   }, [links, catalogueBooksUrl])
 
   const toggleLoginPopup = () => {
-    if (!showLogin) {
-      // Save the scroll width
-      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.paddingRight = `${scrollBarWidth}px`;
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.paddingRight = '';
-      document.body.style.overflow = '';
-    }
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.paddingRight = showLogin ? '' : `${scrollBarWidth}px`;
+    document.body.style.overflow = showLogin ? '' : 'hidden';
   };
 
   return (

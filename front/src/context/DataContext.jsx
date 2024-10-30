@@ -9,6 +9,7 @@ export const DataProvider = ({ children }) => {
     const [fullResponse, setFullResponse] = useState(null);
     const [links, setLinks] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [initialCataloguePage, setInitialCataloguePage] = useState(1);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,7 +30,7 @@ export const DataProvider = ({ children }) => {
     }, [])
 
     return (
-        <DataContext.Provider value={{ fullResponse, links, loading }}>
+        <DataContext.Provider value={{ fullResponse, links, loading, initialCataloguePage, setInitialCataloguePage }}>
             {children}
         </DataContext.Provider>
     );
