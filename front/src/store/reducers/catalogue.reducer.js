@@ -1,26 +1,34 @@
-import { DOWNLOAD_NEW_CATALOGUE_PAGE_TYPE, DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_TYPE, SET_CATALOGUE_DATA_LOADING } from "../actions/catalogue.action";
+import { DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE, DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE, SET_CATALOGUE_DATA_LOADING_TYPE } from "../actions/catalogue.action";
 
 const initialState = {
-    currentPage: 1,
-    previousPage: null,
-    currentData: [],
-    previousData: [],
-    isLoading: false
+    catalogueSliderData: {
+        currentPage: 1,
+        previousPage: null,
+        currentData: [],
+        previousData: [],
+    },
+    numberOfBooks: 0,
+    numberOfBooksPerPage: 5,
+    isLoading: false,
 };
 
 const CatalogueReducer = (state = initialState, action) => {
     switch (action.type) {
-        case DOWNLOAD_NEW_CATALOGUE_PAGE_TYPE: {
+        case DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE: {
             return {
                 ...state,
-                ...action.payload
+                catalogueSliderData: {
+                    ...state.catalogueSliderData,
+                    currentData: action.payload.currentData
+                },
+                numberOfBooks: action.payload.numberOfBooks
             };
         }
-        case DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_TYPE: {
+        case DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE: {
             return state;
         }
 
-        case SET_CATALOGUE_DATA_LOADING: {
+        case SET_CATALOGUE_DATA_LOADING_TYPE: {
             return { ...state, isLoading: action.payload };
         }
 
@@ -28,11 +36,15 @@ const CatalogueReducer = (state = initialState, action) => {
             return state;
     }
 }
+ 
+export const getCurrentPageSelector = (state) => state.catalogueReducer.catalogueSliderData.currentPage;
+export const getPreviousPageSelector = (state) => state.catalogueReducer.catalogueSliderData.previousPage;
+export const getCurrentDataSelector = (state) => state.catalogueReducer.catalogueSliderData.currentData;
+export const getPreviousDataSelector = (state) => state.catalogueReducer.catalogueSliderData.previousData;
 
-export const getCurrentPageSelector = (state) => state.catalogueReducer.currentPage;
-export const getPreviousPageSelector = (state) => state.catalogueReducer.previousPage;
-export const getCurrentDataSelector = (state) => state.catalogueReducer.currentData;
-export const getPreviousDataSelector = (state) => state.catalogueReducer.previousData;
 export const getIsLoadindSelector = (state) => state.catalogueReducer.isLoading;
+
+export const getNumberOfBooksSelector = (state) => state.catalogueReducer.numberOfBooks;
+export const getNumberOfBooksPerPageSelector = (state) => state.catalogueReducer.numberOfBooksPerPage;
 
 export default CatalogueReducer;

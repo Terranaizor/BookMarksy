@@ -5,16 +5,19 @@ import Footer from './components/Footer'
 import LoginPopup from './components/LoginPopup'
 import { useTheme } from './context/ThemeContext'
 import { useData } from './context/DataContext'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setLinksAction } from './store/actions/links.action'
+import { getCatalogueThunk } from './store/actions/catalogue.action'
+import { getCatalogueBooksUrlSelector } from './store/reducers/links.reducer'
 
 function App() {
   const { theme } = useTheme();
   const [showLogin, SetShowLogin] = useState(false);
   const [currentLoginState, SetCurrentLoginState] = useState("Sign up");
-
   const { links, loading } = useData();
+
   const dispatch = useDispatch();
+  const catalogueBooksUrl = useSelector(getCatalogueBooksUrlSelector);
 
   useEffect(() => {
     if (!loading) {
@@ -24,10 +27,12 @@ function App() {
         catalogueBooksUrl: links.catalogueBooksUrl,
         genresListUrl: links.genresListUrl,
         publishersListUrl: links.publishersListUrl
+ 
       }));
+      if (catalogueBooksUrl) { dispatch(getCatalogueThunk(catalogueBooksUrl)); }
     }
 
-  }, [links])
+  }, [links, catalogueBooksUrl])
 
   const toggleLoginPopup = () => {
     if (!showLogin) {

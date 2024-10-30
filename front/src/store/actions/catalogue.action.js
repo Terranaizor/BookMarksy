@@ -1,50 +1,45 @@
 import axios from "axios";
-import { getCatalogueBooksUrlSelector, getPopularBooksUrlSelector } from "../reducers/links.reducer";
-import { useSelector } from "react-redux";
-export const DOWNLOAD_NEW_CATALOGUE_PAGE_TYPE = "DOWNLOAD_NEW_CATALOGUE_PAGE_TYPE";
-export const DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_TYPE = "DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_TYPE";
-export const SET_CATALOGUE_DATA_LOADING = "SET_CATALOGUE_DATA_LOADING";
+export const DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE = "DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE";
+export const DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE = "DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE";
+export const SET_CATALOGUE_DATA_LOADING_TYPE = "SET_CATALOGUE_DATA_LOADING_TYPE";
 
-export const setDownloadNewPageAction = (newPageData) => {
+export const setDownloadNewPageDataAction = (currentData, numberOfBooks) => {
     return {
-        type: DOWNLOAD_NEW_CATALOGUE_PAGE_TYPE,
-        payload: newPageData
+        type: DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE,
+        payload: {
+            currentData,
+            numberOfBooks
+        }
     };
 };
 
-export const setDownloadPrevPageAction = () => {
+export const setDownloadPrevPageDataAction = () => {
     return {
-        type: DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_TYPE,
+        type: DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE,
     };
 };
 
 export const setCatalogueDataLoadingAction = (loading) => {
     return {
-        type: SET_CATALOGUE_DATA_LOADING,
+        type: SET_CATALOGUE_DATA_LOADING_TYPE,
         payload: loading,
     };
 };
 
-export const getCatalogueThunk = () => {
+export const getCatalogueThunk = (catalogueBooksUrl) => {
     return async (dispatch, getState) => {
-        console.time("API Fetch Time");
         dispatch(setCatalogueDataLoadingAction(true));
-
-        const catalogueBooksUrl = getCatalogueBooksUrlSelector(getState());
-
-        try { 
+        console.log("getCatalogueThunk called")
+        try {
             const response = await axios.get(catalogueBooksUrl);
-            console.log("response(getState())", response)
-            const newData = {
-                currentData: response.data.results, 
-            };
+            const currentData = response.data.results;
+            const numberOfBooks = response.data.count;
 
-            dispatch(setDownloadNewPageAction(newData));
+            dispatch(setDownloadNewPageDataAction(currentData, numberOfBooks));
         } catch (error) {
             console.error("Error fetching catalogue:", error);
         } finally {
             dispatch(setCatalogueDataLoadingAction(false));
-            console.timeEnd("API Fetch Time");
         }
     }
 }
