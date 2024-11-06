@@ -5,8 +5,8 @@ import { useTheme } from './context/ThemeContext'
 import { useData } from './context/DataContext'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLinksAction } from './store/actions/links.action'
-import { getCatalogueThunk } from './store/actions/catalogue.action'
-import { getCatalogueBooksUrlSelector } from './store/reducers/links.reducer'
+import { getCatalogueThunk, getGenresThunk } from './store/actions/catalogue.action'
+import { getCatalogueBooksUrlSelector, getGenresListUrlSelector } from './store/reducers/links.reducer'
 
 function App() {
   const { theme } = useTheme();
@@ -16,6 +16,7 @@ function App() {
 
   const dispatch = useDispatch();
   const catalogueBooksUrl = useSelector(getCatalogueBooksUrlSelector);
+  const genresListUrl = useSelector(getGenresListUrlSelector);
 
   useEffect(() => {
     if (!loading) {
@@ -26,9 +27,25 @@ function App() {
         genresListUrl: links.genresListUrl,
         publishersListUrl: links.publishersListUrl
       }));
-      if (catalogueBooksUrl) { dispatch(getCatalogueThunk(catalogueBooksUrl, initialCataloguePage)); }
     }
-  }, [links, catalogueBooksUrl])
+  }, [loading]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (catalogueBooksUrl && genresListUrl) {
+        const requests = [
+          dispatch(getCatalogueThunk(catalogueBooksUrl, initialCataloguePage)),
+          dispatch(getGenresThunk(genresListUrl))
+        ];
+        try {
+          await Promise.all(requests);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+    }
+    fetchData();
+  }, [catalogueBooksUrl, genresListUrl, loading]);
 
   const toggleLoginPopup = () => {
     const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
@@ -42,7 +59,9 @@ function App() {
         {showLogin ? <LoginPopup SetShowLogin={SetShowLogin} toggleLoginPopup={toggleLoginPopup}
           currentLoginState={currentLoginState} SetCurrentLoginState={SetCurrentLoginState} /> : <></>}
         <NavBar SetShowLogin={SetShowLogin} toggleLoginPopup={toggleLoginPopup} />
+        {/* routes */}
         <MainPage />
+        {/* routes */}
         <Footer SetShowLogin={SetShowLogin} toggleLoginPopup={toggleLoginPopup}
           currentLoginState={currentLoginState} SetCurrentLoginState={SetCurrentLoginState} />
       </Fragment>

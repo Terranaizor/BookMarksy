@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentDataSelector, getCurrentPageSelector, getNumberOfBooksPerPageSelector, getNumberOfBooksSelector, getPreviousDataSelector, getPreviousPageSelector } from '../../store/reducers/catalogue.reducer';
 import { getCatalogueBooksUrlSelector } from '../../store/reducers/links.reducer';
 import { getCatalogueThunk, setDownloadPrevPageDataAction, swapDataAction } from '../../store/actions/catalogue.action';
+import { Pagination } from 'rsuite'
 
-const Pagination = () => {
+const PaginationComponent = () => {
     const catalogueBooksUrl = useSelector(getCatalogueBooksUrlSelector);
     const dispatch = useDispatch();
 
     const numberOfBooks = useSelector(getNumberOfBooksSelector);
     const numberOfBooksPerPage = useSelector(getNumberOfBooksPerPageSelector);
-    const numberOfPages = Math.ceil(numberOfBooks / numberOfBooksPerPage);
 
     const currentPage = useSelector(getCurrentPageSelector);
     const currentData = useSelector(getCurrentDataSelector);
     const previousPage = useSelector(getPreviousPageSelector);
     const previousData = useSelector(getPreviousDataSelector);
 
-    const handlePageClick = (pageNumber) => {
+    const [activePage, setActivePage] = useState(1);
+    const paginationData = {
+        prev: true,
+        next: true,
+        first: true,
+        last: true,
+        maxButtons: 5,
+        layout: ['pager']
+    };
+
+    const handlePageClick =  (pageNumber) => {
         const isNewPage = currentPage !== pageNumber;
         const isPreviousPage = pageNumber === previousPage;
         const newCatalogueBooksUrl = `${catalogueBooksUrl}?page=${pageNumber}`;
@@ -34,20 +44,28 @@ const Pagination = () => {
         }
     };
 
+    const handlePageChange = (pageNumber) => {
+        setActivePage(pageNumber);
+        handlePageClick(pageNumber);
+    };
+
     return (
         <div className='pagination-section'>
-            {Array.from({ length: numberOfPages }, (_, index) => (
-                <button
-                    className='pagination-btn'
-                    style={{ 'width': '100px', 'marginLeft': '20px' }}
-                    key={index + 1}
-                    onClick={() => handlePageClick(index + 1)}
-                >
-                    {index + 1}
-                </button>
-            ))}
+            <Pagination
+                layout={paginationData.layout}
+                prev={paginationData.prev}
+                next={paginationData.next}
+                first={paginationData.first}
+                last={paginationData.last}
+
+                total={numberOfBooks}
+                limit={numberOfBooksPerPage}
+
+                activePage={activePage}
+                onChangePage={handlePageChange}
+            />
         </div>
     );
 };
 
-export default Pagination;
+export default PaginationComponent;

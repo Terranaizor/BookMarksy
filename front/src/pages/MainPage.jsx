@@ -1,7 +1,5 @@
 import React from 'react';
-import BlurNotifications from '../components/BlurNotifications';
-import Community from '../components/Community';
-import Catalogue from '../components/sliders/Catalogue';
+import {Community, Catalogue, BlurNotifications}  from '../components/';
 
 const MainPage = () => {
     return (

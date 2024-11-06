@@ -1,4 +1,4 @@
-import { DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE, DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE, SET_CATALOGUE_DATA_LOADING_TYPE, SWAP_DATA_TYPE } from "../actions/catalogue.action";
+import { DOWNLOAD_GENRES_DATA_TYPE, DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE, DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE, SET_CATALOGUE_DATA_LOADING_TYPE, SET_GENRES_LOADING_TYPE, SWAP_DATA_TYPE } from "../actions/catalogue.action";
 
 const initialState = {
     catalogueSliderData: {
@@ -9,7 +9,9 @@ const initialState = {
     },
     numberOfBooks: 0,
     numberOfBooksPerPage: 5,
-    isLoading: false,
+    isDataLoading: true,
+    isGenresLoading: false,
+    genresArray: []
 };
 
 const CatalogueReducer = (state = initialState, action) => {
@@ -35,9 +37,19 @@ const CatalogueReducer = (state = initialState, action) => {
                 }
             };
         }
+        case DOWNLOAD_GENRES_DATA_TYPE: {
+            return {
+                ...state,
+                genresArray: action.payload.genresArray
+            };
+        }
 
         case SET_CATALOGUE_DATA_LOADING_TYPE: {
-            return { ...state, isLoading: action.payload };
+            return { ...state, isDataLoading: action.payload };
+        }
+
+        case SET_GENRES_LOADING_TYPE: {
+            return { ...state, isGenresLoading: action.payload };
         }
 
         case SWAP_DATA_TYPE: {
@@ -62,9 +74,13 @@ export const getPreviousPageSelector = (state) => state.catalogueReducer.catalog
 export const getCurrentDataSelector = (state) => state.catalogueReducer.catalogueSliderData.currentData;
 export const getPreviousDataSelector = (state) => state.catalogueReducer.catalogueSliderData.previousData;
 
-export const getIsLoadindSelector = (state) => state.catalogueReducer.isLoading;
+export const getIsDataLoadingSelector = (state) => state.catalogueReducer.isDataLoading;
+export const getIsGenresLoadingSelector = (state) => state.catalogueReducer.isGenresLoading;
 
 export const getNumberOfBooksSelector = (state) => state.catalogueReducer.numberOfBooks;
 export const getNumberOfBooksPerPageSelector = (state) => state.catalogueReducer.numberOfBooksPerPage;
+
+export const areGenresLoadedSelector = (state) => state.catalogueReducer.genresArray?.length > 0;
+export const getGenresSelector = (state) => state.catalogueReducer.genresArray;
 
 export default CatalogueReducer;
