@@ -1,6 +1,6 @@
 .main-nav {
     @include flex-container(row, 0px, center, space-between);
-    padding: 10px 60px;
+    padding: 10px $basic-padding-md;
     div {
         @include flex-container(row, 0px, center);
         img {
