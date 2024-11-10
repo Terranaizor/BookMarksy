@@ -5,9 +5,8 @@ const Catalogue = () => {
     return (
         <section className='catalogue-section'>
             <SortControl />
-            
-            {/* <CatalogueBookSection />
-            <PaginationComponent /> */}
+            <CatalogueBookSection />
+            <PaginationComponent />
         </section>
     );
 };

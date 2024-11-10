@@ -7,11 +7,7 @@ const CatalogueBookSection = () => {
     const currentData = useSelector(getCurrentDataSelector);
 
     return (
-        <div className='catalogue-book-section'
-            style={{
-                'display': 'grid', 'gap': '20px', 'gridTemplateColumns': 'repeat(3, 1fr)',
-                'marginBottom': '20px'
-            }}>
+        <section className='catalogue-book__section' >
             {currentData && currentData.map((book) => (
                 <Book title={book.title}
                     author={book.author}
@@ -21,7 +17,16 @@ const CatalogueBookSection = () => {
                     key={book.url}
                 />
             ))}
-        </div>
+            {currentData && currentData.map((book, index) => (
+                index % 2 === 0 ? <Book title={book.title}
+                    author={book.author}
+                    rating={book.rating}
+                    cover={book.cover}
+                    publisher={book.publisher}
+                    key={book.url}
+                /> : null
+            ))}
+        </section>
     );
 };
 

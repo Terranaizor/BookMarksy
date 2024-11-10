@@ -12,9 +12,6 @@
     }
 }
 
-.icon {
-    @include icon-base(20px, 20px, var(--accent-color));
-}
 
 .theme-select {
     position: relative;

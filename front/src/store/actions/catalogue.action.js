@@ -5,7 +5,7 @@ export const DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE = "DOWNLOAD_NEW_CATALOGUE_PAG
 export const DOWNLOAD_GENRES_DATA_TYPE = "DOWNLOAD_GENRES_DATA_TYPE";
 export const SET_CATALOGUE_DATA_LOADING_TYPE = "SET_CATALOGUE_DATA_LOADING_TYPE";
 export const SWAP_DATA_TYPE = "SWAP_DATA_TYPE";
-export const SET_GENRES_LOADING_TYPE = "SWAP_DATA_TYPE";
+export const SET_GENRES_LOADING_TYPE = "SET_GENRES_LOADING_TYPE";
 
 export const downloadNewPageDataAction = (currentData, numberOfBooks, currentPage) => {
     return {
