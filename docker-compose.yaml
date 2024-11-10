@@ -4,16 +4,17 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: bookmarksy_backend
-    command: sh -c "python3 manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"
+    # command: sh -c "python3 manage.py migrate --noinput && python3 manage.py loaddata data_backup.json && python3 manage.py runserver 0.0.0.0:8000"
     restart: always
     volumes:
       - ./backend:/app
+      - ./backend/backup:/backup
     env_file:
       - .env
     ports:
       - "8000:8000"
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
 
   frontend:
     build:
@@ -30,14 +31,27 @@ services:
     depends_on:
       - backend
 
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - .dbdata:/var/lib/postgres/data
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+        - "${DB_PORT}:${DB_PORT}"
   # db:
   #   image: postgres
   #   restart: always
   #   volumes:
   #     - .dbdata:/var/lib/postgres/data
+  #     - ./db_backups:/db_backups
   #   environment:
   #     POSTGRES_PASSWORD: ${DB_PASSWORD}
   #     POSTGRES_DB: ${DB_NAME}
   #     PGDATA: /var/lib/postgresql/data/pgdata
+  #   command: bash -c "psql -U postgres -d ${DB_NAME} -f /db_backups/backup.sql"
   #   ports:
   #       - "${DB_PORT}:${DB_PORT}"

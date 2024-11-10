@@ -11,9 +11,8 @@ class GenreListSerializer(serializers.ModelSerializer):
         model = Genre
         fields = ['name']
     
-    def to_representation(self, instance):
-        return instance.name
-
+    # def to_representation(self, instance):
+    #     return {'Genre': [instance.name]}
 class PublisherListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Publisher

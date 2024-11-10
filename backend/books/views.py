@@ -26,6 +26,12 @@ class BooksLinksView(APIView):
 class GenreListView(generics.ListAPIView):
     queryset = Genre.objects.all()
     serializer_class = GenreListSerializer
+    def list(self, request, *args, **kwargs):
+        response = super().list(request, *args, **kwargs)
+        
+        genre_names = [genre['name'] for genre in response.data]
+        
+        return Response({'Genres': genre_names})
 
 class PublisherListView(generics.ListAPIView):
     queryset = Publisher.objects.all()
@@ -62,7 +68,7 @@ class PopularBooksView(generics.ListAPIView):
         return most_read_editions
 
 class FilteredBookEditionsPagination(PageNumberPagination):
-    page_size = 5
+    page_size = 11
 
 class FilteredBookEditionsView(generics.ListAPIView):
     serializer_class = BookEditionListSerializer
