@@ -75,7 +75,7 @@ footer {
     list-style: none;
   }
   li a {
-    @include text-base(var(--text-color), $font-weight: 300, $font-size: 15px);
+    @include text-base(var(--active-text-color), $font-weight: 300, $font-size: 15px);
     text-decoration: none;
   }
 }
@@ -108,7 +108,7 @@ footer {
   }
   .login {
     background-color: var(--background-color);
-    @include text-base(var(--text-color), $font-weight: 400, $font-size: 15px);
+    @include text-base(var(--active-text-color), $font-weight: 400, $font-size: 15px);
     @include btn-base();
   }
 }

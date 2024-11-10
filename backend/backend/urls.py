@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+import debug_toolbar
+from django.conf import settings
+from django.urls import include, path
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path('admin/',admin.site.urls),
@@ -27,3 +31,6 @@ urlpatterns = [
     # path('api/', include('stats.urls')),
     # path('api/', include('notifications.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns = urlpatterns + debug_toolbar_urls()

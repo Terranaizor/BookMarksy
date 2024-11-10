@@ -1,11 +1,11 @@
 import React from 'react';
-import BlurNotifications from '../components/BlurNotifications';
-import Community from '../components/Community';
+import {Community, Catalogue, BlurNotifications}  from '../components/';
 
 const MainPage = () => {
     return (
         <div>
             <BlurNotifications />
+            <Catalogue />
             <Community />
         </div>
     );
