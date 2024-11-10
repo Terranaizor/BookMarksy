@@ -13,7 +13,7 @@
     background-color: var(--background-color);
     margin: 0 auto;
     position: sticky;
-    top: 0;
+    top: 60px;
     .catalogue-search--input {
         @include flex-container(row, 5px, end, space-between);
         width: 95%;
