@@ -10,6 +10,9 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
+# COPY wait-for-it.sh /app/wait-for-it.sh
+# RUN chmod +x /app/wait-for-it.sh
+
 # Copy the entrypoint script
 COPY entrypoint.sh /entrypoint.sh
 
