@@ -24,6 +24,7 @@ const CatalogueReducer = (state = initialState, action) => {
                     currentData: action.payload.currentData,
                     currentPage: action.payload.currentPage
                 },
+                numberOfBooksPerPage:action.payload.book_count_page, 
                 numberOfBooks: action.payload.numberOfBooks
             };
         }

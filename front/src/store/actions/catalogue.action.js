@@ -7,12 +7,13 @@ export const SET_CATALOGUE_DATA_LOADING_TYPE = "SET_CATALOGUE_DATA_LOADING_TYPE"
 export const SWAP_DATA_TYPE = "SWAP_DATA_TYPE";
 export const SET_GENRES_LOADING_TYPE = "SET_GENRES_LOADING_TYPE";
 
-export const downloadNewPageDataAction = (currentData, numberOfBooks, currentPage) => {
+export const downloadNewPageDataAction = (currentData, numberOfBooks, book_count_page, currentPage) => {
     return {
         type: DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE,
         payload: {
             currentData,
             numberOfBooks,
+            book_count_page,
             currentPage
         }
     };
@@ -70,7 +71,8 @@ export const getCatalogueThunk = (catalogueBooksUrl, currentPage) => {
             const response = await axios.get(catalogueBooksUrl);
             const currentData = response.data.results;
             const numberOfBooks = response.data.count;
-            dispatch(downloadNewPageDataAction(currentData, numberOfBooks, currentPage));
+            const book_count_page = response.data.book_count_page;
+            dispatch(downloadNewPageDataAction(currentData, numberOfBooks, book_count_page, currentPage));
         } catch (error) {
             console.error("Error fetching catalogue:", error);
         } finally {
