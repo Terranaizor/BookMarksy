@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState } from "react"; // Додано useState
+import React, { createContext, useContext, useState } from "react";
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-    const [theme, setTheme] = useState('light'); // Змінна стану для теми
+    const [theme, setTheme] = useState('light');
 
     const changeTheme = (selectedTheme) => {
         setTheme(selectedTheme);
