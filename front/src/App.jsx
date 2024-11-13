@@ -6,7 +6,8 @@ import { useData } from './context/DataContext'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLinksAction } from './store/actions/links.action'
 import { getCatalogueThunk, getGenresThunk } from './store/actions/catalogue.action'
-import { getCatalogueBooksUrlSelector, getGenresListUrlSelector } from './store/reducers/links.reducer'
+import { getCatalogueBooksUrlSelector, getGenresListUrlSelector, getNewBooksUrlSelector, getPopularBooksUrlSelector } from './store/reducers/links.reducer'
+import { getSlidersDataThunk } from './store/actions/sliders.action'
 
 function App() {
   const { theme } = useTheme();
@@ -17,6 +18,8 @@ function App() {
   const dispatch = useDispatch();
   const catalogueBooksUrl = useSelector(getCatalogueBooksUrlSelector);
   const genresListUrl = useSelector(getGenresListUrlSelector);
+  const popularBooksUrl = useSelector(getPopularBooksUrlSelector);
+  const newBooksUrl = useSelector(getNewBooksUrlSelector);
 
   useEffect(() => {
     if (!loading) {
@@ -35,7 +38,8 @@ function App() {
       if (catalogueBooksUrl && genresListUrl) {
         const requests = [
           dispatch(getCatalogueThunk(catalogueBooksUrl, initialCataloguePage)),
-          dispatch(getGenresThunk(genresListUrl))
+          dispatch(getGenresThunk(genresListUrl)),
+          dispatch(getSlidersDataThunk(popularBooksUrl, newBooksUrl))
         ];
         try {
           await Promise.all(requests);
@@ -45,7 +49,7 @@ function App() {
       }
     }
     fetchData();
-  }, [catalogueBooksUrl, genresListUrl, loading]);
+  }, [catalogueBooksUrl, genresListUrl, loading, popularBooksUrl, newBooksUrl]);
 
   const toggleLoginPopup = () => {
     const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;

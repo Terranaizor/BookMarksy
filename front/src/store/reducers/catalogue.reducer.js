@@ -8,7 +8,7 @@ const initialState = {
         previousData: [],
     },
     numberOfBooks: 0,
-    numberOfBooksPerPage: 5,
+    numberOfBooksPerPage: 15,
     isDataLoading: true,
     isGenresLoading: false,
     genresArray: []

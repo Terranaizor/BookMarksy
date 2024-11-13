@@ -16,16 +16,7 @@ const CatalogueBookSection = () => {
                     publisher={book.publisher}
                     key={book.url}
                 />
-            ))}
-            {currentData && currentData.map((book, index) => (
-                index % 2 === 0 ? <Book title={book.title}
-                    author={book.author}
-                    rating={book.rating}
-                    cover={book.cover}
-                    publisher={book.publisher}
-                    key={book.url}
-                /> : null
-            ))}
+            ))}      
         </section>
     );
 };
