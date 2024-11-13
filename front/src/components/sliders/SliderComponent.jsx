@@ -3,11 +3,10 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import Book from './Book';
 
-const SliderComponent = ({title, data}) => {
+const SliderComponent = ({ title, data }) => {
     return (
         <div className='slider-section'>
             <h5 className='slider-title'>{title}</h5>
-           { console.log("data", data)}
             <Splide
                 className='slider'
                 options={{
@@ -19,7 +18,7 @@ const SliderComponent = ({title, data}) => {
                 }}>
                 {data.map((book) => {
                     return (
-                        <SplideSlide >
+                        <SplideSlide key={book.url}>
                             <Book title={book.title}
                                 author={book.author}
                                 rating={book.rating}

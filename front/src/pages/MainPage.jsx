@@ -10,8 +10,6 @@ const MainPage = () => {
 
     return (
         <div>
-        {console.log("popularBooks", popularBooks)}
-        {console.log("newBooks", newBooks)}
             <BlurNotifications />
             <SliderComponent {...popularBooks} />
             <SliderComponent {...newBooks} />

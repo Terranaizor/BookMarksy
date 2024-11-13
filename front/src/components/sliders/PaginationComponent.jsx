@@ -51,7 +51,6 @@ const PaginationComponent = () => {
 
     return (
         <div className='pagination-section'>
-        {console.log("numberOfBooksPerPage", numberOfBooksPerPage)}
             <Pagination
                 layout={paginationData.layout}
                 prev={paginationData.prev}
