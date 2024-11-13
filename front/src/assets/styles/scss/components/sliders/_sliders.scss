@@ -1,0 +1,20 @@
+.slider-section {
+    width: 80%;
+    margin: 5px auto;
+    border-bottom: 1px solid var(--accent-color);
+    margin-bottom: 20px;
+}
+.splide__slide {
+    margin-right: 15px;
+    width: $book-section-width-md !important;
+    margin: 20px 15px 20px 0;
+}
+.splide__slide img {
+    height: 200px;
+    object-fit: contain;
+}
+
+.slider-title {
+    @include text-base(var(--title-color), $title-font, 400, 20px);
+    text-transform: capitalize;
+}
