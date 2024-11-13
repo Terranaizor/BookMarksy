@@ -20,6 +20,7 @@ class BooksLinksView(APIView):
             "catalogueBooksUrl": request.build_absolute_uri(reverse('filtered-bookeditions')),
             "genresListUrl": request.build_absolute_uri(reverse('genres-list')),
             "publishersListUrl": request.build_absolute_uri(reverse('publishers-list')),
+            "filterParametersUrl": request.build_absolute_uri(reverse('filter-parameters')),
         }
         return Response(response_data, status=status.HTTP_200_OK)
 
@@ -36,6 +37,25 @@ class GenreListView(generics.ListAPIView):
 class PublisherListView(generics.ListAPIView):
     queryset = Publisher.objects.all()
     serializer_class = PublisherListSerializer
+    def list(self, request, *args, **kwargs):
+        response = super().list(request, *args, **kwargs)
+        
+        publisher_names = [publisher['name'] for publisher in response.data]
+        
+        return Response({'Publishers': publisher_names})
+
+class FilterParametersView(APIView):
+    def get(self, request, *args, **kwargs):
+        genre_view = GenreListView.as_view()(request._request)
+        publisher_view = PublisherListView.as_view()(request._request)
+        
+        genres_data = genre_view.data
+        publishers_data = publisher_view.data
+
+        return Response({
+            'Genres': genres_data['Genres'],
+            'Publishers': publishers_data['Publishers']
+        })
 
 class NewBooksView(generics.ListAPIView):
     serializer_class = BookEditionListSerializer
@@ -68,7 +88,7 @@ class PopularBooksView(generics.ListAPIView):
         return most_read_editions
 
 class FilteredBookEditionsPagination(PageNumberPagination):
-    page_size = 11
+    page_size = 5
 
 class FilteredBookEditionsView(generics.ListAPIView):
     serializer_class = BookEditionListSerializer
@@ -96,11 +116,9 @@ class FilteredBookEditionsView(generics.ListAPIView):
         return queryset
     
     def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        total_books = queryset.count()
         response = super().list(request, *args, **kwargs)
         
-        response.data['total_books'] = total_books
+        response.data['book_count_page'] = FilteredBookEditionsPagination.page_size
         return response
 
 class BookEditionDetailView(generics.RetrieveAPIView):

@@ -12,6 +12,7 @@ urlpatterns = [
     path('books/<int:pk>/', BookEditionDetailView.as_view(), name='bookedition-detail'),
     path('books/genres/', GenreListView.as_view(), name='genres-list'),
     path('books/publishers/', PublisherListView.as_view(), name='publishers-list'),
+    path('books/filter_parameters/', FilterParametersView.as_view(), name='filter-parameters'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
