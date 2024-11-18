@@ -31,8 +31,9 @@ class GenreListView(generics.ListAPIView):
         response = super().list(request, *args, **kwargs)
         
         genre_names = [genre['name'] for genre in response.data]
+        genre_data = {'data': genre_names, 'type': 'checkbox'}
         
-        return Response({'Genres': genre_names})
+        return Response({'Genres': genre_data})
 
 class PublisherListView(generics.ListAPIView):
     queryset = Publisher.objects.all()
@@ -41,8 +42,9 @@ class PublisherListView(generics.ListAPIView):
         response = super().list(request, *args, **kwargs)
         
         publisher_names = [publisher['name'] for publisher in response.data]
-        
-        return Response({'Publishers': publisher_names})
+        publisher_data = {'data': publisher_names, 'type': 'radio'}
+
+        return Response({'Publishers': publisher_data})
 
 class FilterParametersView(APIView):
     def get(self, request, *args, **kwargs):
