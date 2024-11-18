@@ -5,21 +5,24 @@ import { useTheme } from './context/ThemeContext'
 import { useData } from './context/DataContext'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLinksAction } from './store/actions/links.action'
-import { getCatalogueThunk, getGenresThunk } from './store/actions/catalogue.action'
-import { getCatalogueBooksUrlSelector, getGenresListUrlSelector, getNewBooksUrlSelector, getPopularBooksUrlSelector } from './store/reducers/links.reducer'
+import { getCatalogueThunk, getFiltersThunk } from './store/actions/catalogue.action'
+import { getCatalogueBooksUrlSelector, getFilterParanetersUrlSelector, getGenresListUrlSelector, getNewBooksUrlSelector, getPopularBooksUrlSelector } from './store/reducers/links.reducer'
 import { getSlidersDataThunk } from './store/actions/sliders.action'
+import { useCatalogueData } from './context/CatalogueDataContext'
 
 function App() {
   const { theme } = useTheme();
   const [showLogin, SetShowLogin] = useState(false);
   const [currentLoginState, SetCurrentLoginState] = useState("Sign up");
-  const { links, loading, initialCataloguePage } = useData();
+  const { links, loading } = useData();
+  const { initialCataloguePage } = useCatalogueData();
 
   const dispatch = useDispatch();
   const catalogueBooksUrl = useSelector(getCatalogueBooksUrlSelector);
   const genresListUrl = useSelector(getGenresListUrlSelector);
   const popularBooksUrl = useSelector(getPopularBooksUrlSelector);
   const newBooksUrl = useSelector(getNewBooksUrlSelector);
+  const filterParametersUrl = useSelector(getFilterParanetersUrlSelector);
 
   useEffect(() => {
     if (!loading) {
@@ -28,17 +31,18 @@ function App() {
         popularBooksUrl: links.popularBooksUrl,
         catalogueBooksUrl: links.catalogueBooksUrl,
         genresListUrl: links.genresListUrl,
-        publishersListUrl: links.publishersListUrl
+        publishersListUrl: links.publishersListUrl,
+        filterParametersUrl: links.filterParametersUrl,
       }));
     }
   }, [loading]);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (catalogueBooksUrl && genresListUrl) {
+      if (catalogueBooksUrl && filterParametersUrl) {
         const requests = [
           dispatch(getCatalogueThunk(catalogueBooksUrl, initialCataloguePage)),
-          dispatch(getGenresThunk(genresListUrl)),
+          dispatch(getFiltersThunk(filterParametersUrl)),
           dispatch(getSlidersDataThunk(popularBooksUrl, newBooksUrl))
         ];
         try {

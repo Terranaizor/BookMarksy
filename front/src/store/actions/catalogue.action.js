@@ -1,11 +1,11 @@
 import axios from "axios";
-import { areGenresLoadedSelector } from "../reducers/catalogue.reducer";
 export const DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE = "DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE";
 export const DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE = "DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE";
-export const DOWNLOAD_GENRES_DATA_TYPE = "DOWNLOAD_GENRES_DATA_TYPE";
+export const DOWNLOAD_FILTERS_DATA_TYPE = "DOWNLOAD_FILTERS_DATA_TYPE";
 export const SET_CATALOGUE_DATA_LOADING_TYPE = "SET_CATALOGUE_DATA_LOADING_TYPE";
 export const SWAP_DATA_TYPE = "SWAP_DATA_TYPE";
-export const SET_GENRES_LOADING_TYPE = "SET_GENRES_LOADING_TYPE";
+export const SET_FILTERS_LOADING_TYPE = "SET_FILTERS_LOADING_TYPE";
+export const SHOW_FILTERED_BOOKS_TYPE = "SHOW_FILTERED_BOOKS_TYPE";
 
 export const downloadNewPageDataAction = (currentData, numberOfBooks, book_count_page, currentPage) => {
     return {
@@ -19,11 +19,11 @@ export const downloadNewPageDataAction = (currentData, numberOfBooks, book_count
     };
 };
 
-export const downloadGenresAction = (genresArray) => {
+export const downloadFiltersAction = (filters) => {
     return {
-        type: DOWNLOAD_GENRES_DATA_TYPE,
+        type: DOWNLOAD_FILTERS_DATA_TYPE,
         payload: {
-            genresArray
+            filters
         }
     };
 };
@@ -45,9 +45,9 @@ export const setCatalogueDataLoadingAction = (loading) => {
     };
 };
 
-export const setGenresLoadingAction = (loading) => {
+export const setFiltersLoadingAction = (loading) => {
     return {
-        type: SET_GENRES_LOADING_TYPE,
+        type: SET_FILTERS_LOADING_TYPE,
         payload: loading,
     };
 };
@@ -61,6 +61,13 @@ export const swapDataAction = (currentPage, currentData, previousPage, previousD
             previousPage,
             previousData
         }
+    };
+};
+
+export const showFilteredAction = (showFiltered) => {
+    return {
+        type: SHOW_FILTERED_BOOKS_TYPE,
+        payload: showFiltered,
     };
 };
 
@@ -81,21 +88,17 @@ export const getCatalogueThunk = (catalogueBooksUrl, currentPage) => {
     }
 }
 
-export const getGenresThunk = (genresListUrl) => {
-    return async (dispatch, getState) => {
-        dispatch(setGenresLoadingAction(true));
+export const getFiltersThunk = (filterParametersUrl) => {
+    return async (dispatch) => {
+        dispatch(setFiltersLoadingAction(true));
         try {
-            const state = getState();
-            const areGenresLoaded = areGenresLoadedSelector(state);
-            if (!areGenresLoaded) {
-                const response = await axios.get(genresListUrl);
-                const genresArray = response.data;
-                dispatch(downloadGenresAction(genresArray));
-            }
+            const response = await axios.get(filterParametersUrl);
+            const filtersData = response.data;
+            dispatch(downloadFiltersAction(filtersData));
         } catch (error) {
-            console.error("Error fetching genres:", error);
+            console.error("Error fetching filters:", error);
         } finally {
-            dispatch(setGenresLoadingAction(false));
+            dispatch(setFiltersLoadingAction(false));
         }
     }
 }

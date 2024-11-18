@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentDataSelector, getCurrentPageSelector, getNumberOfBooksPerPageSelector, getNumberOfBooksSelector, getPreviousDataSelector, getPreviousPageSelector } from '../../store/reducers/catalogue.reducer';
+import { getCurrentDataSelector, getCurrentPageSelector, getIsFilteredSelector, getNumberOfBooksPerPageSelector, getNumberOfBooksSelector, getPreviousDataSelector, getPreviousPageSelector } from '../../store/reducers/catalogue.reducer';
 import { getCatalogueBooksUrlSelector } from '../../store/reducers/links.reducer';
 import { getCatalogueThunk, setDownloadPrevPageDataAction, swapDataAction } from '../../store/actions/catalogue.action';
 import { Pagination } from 'rsuite'
+import { useCatalogueData } from '../../context/CatalogueDataContext';
 
 const PaginationComponent = () => {
     const catalogueBooksUrl = useSelector(getCatalogueBooksUrlSelector);
@@ -27,10 +28,17 @@ const PaginationComponent = () => {
         layout: ['pager']
     };
 
-    const handlePageClick =  (pageNumber) => {
+    const { apiUrlForSortCatalogue } = useCatalogueData();
+    const isFiltered = useSelector(getIsFilteredSelector);
+
+    const handlePageClick = (pageNumber) => {
         const isNewPage = currentPage !== pageNumber;
         const isPreviousPage = pageNumber === previousPage;
         const newCatalogueBooksUrl = `${catalogueBooksUrl}?page=${pageNumber}`;
+
+        let apiUrl = '';
+        isFiltered ? apiUrl = `${apiUrlForSortCatalogue}?page=${pageNumber}`
+            : apiUrl = newCatalogueBooksUrl
 
         if (isNewPage) {
             if (isPreviousPage) {
@@ -39,7 +47,7 @@ const PaginationComponent = () => {
             }
             if (catalogueBooksUrl && currentData) {
                 dispatch(setDownloadPrevPageDataAction(currentPage, currentData));
-                dispatch(getCatalogueThunk(newCatalogueBooksUrl, pageNumber));
+                dispatch(getCatalogueThunk(apiUrl, pageNumber));
             }
         }
     };
@@ -51,7 +59,6 @@ const PaginationComponent = () => {
 
     return (
         <div className='pagination-section'>
-        {console.log(numberOfBooksPerPage)}
             <Pagination
                 layout={paginationData.layout}
                 prev={paginationData.prev}

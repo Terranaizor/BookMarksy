@@ -6,14 +6,17 @@ import { ThemeProvider } from './context/ThemeContext.jsx';
 import { Provider } from 'react-redux';
 import { DataProvider } from './context/DataContext.jsx';
 import store from './store/store.js';
+import { CatalogueDataProvider } from './context/CatalogueDataContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <DataProvider>
       <Provider store={store}>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
+        <CatalogueDataProvider>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </CatalogueDataProvider>
       </Provider>
     </DataProvider>
   </StrictMode>

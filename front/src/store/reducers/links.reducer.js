@@ -5,7 +5,8 @@ const initialState = {
     popularBooksUrl: null,
     catalogueBooksUrl: null,
     genresListUrl: null,
-    publishersListUrl: null
+    publishersListUrl: null,
+    filterParametersUrl: null
 };
 
 const LinksReducer = (state = initialState, action) => {
@@ -26,5 +27,6 @@ export const getPopularBooksUrlSelector = (state) => state.linksReducer.popularB
 export const getCatalogueBooksUrlSelector = (state) => state.linksReducer.catalogueBooksUrl;
 export const getGenresListUrlSelector = (state) => state.linksReducer.genresListUrl;
 export const getPublishersListUrlSelector = (state) => state.linksReducer.publishersListUrl;
+export const getFilterParanetersUrlSelector = (state) => state.linksReducer.filterParametersUrl;
 
 export default LinksReducer;

@@ -348,7 +348,7 @@ footer li a {
   gap: 10px;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
   background-color: var(--shadow-color);
 }
 
@@ -545,6 +545,7 @@ footer li a {
   position: absolute;
   top: 35px;
   right: 0;
+  overflow-y: auto;
   min-height: 40vh;
   max-height: 80vh;
   padding: 20px;
@@ -575,7 +576,6 @@ footer li a {
   font-family: "Merriweather", serif;
   font-weight: 200;
   font-size: 20px;
-  overflow-y: scroll;
 }
 .filter-menu__section .filter-menu__section-title {
   color: var(--title-color);
