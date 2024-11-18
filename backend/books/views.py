@@ -99,20 +99,26 @@ class FilteredBookEditionsView(generics.ListAPIView):
             book_readers=F('book__readersWeek'),
             edition_readers=F('readersTotal')
         ).order_by('-book_readers', '-edition_readers')
+
         search = self.request.query_params.get('search', None)
-        genres = self.request.query_params.getlist('genres')
+        genres = self.request.query_params.getlist('genres', [])
+        publisher = self.request.query_params.get('publisher', None)
+
         if genres:
             genre_queries = [Q(book__genres__name__iexact=genre) for genre in genres]
-            # genre_filter = genre_queries.pop()
             for query in genre_queries:
-                # genre_filter = genre_filter & query 
                 queryset = queryset.filter(query).distinct()
+
+        if publisher:
+            publisher_filter = Q(publisher__name__iexact = publisher)
+            queryset = queryset.filter(publisher_filter).distinct()
+
         if search:
             queryset = queryset.filter(
                 Q(book__title__icontains=search) |
                 Q(book__author__icontains=search)
             ).distinct()
-        
+
         return queryset
     
     def list(self, request, *args, **kwargs):
