@@ -1,4 +1,4 @@
-import { DOWNLOAD_GENRES_DATA_TYPE, DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE, DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE, SET_CATALOGUE_DATA_LOADING_TYPE, SET_GENRES_LOADING_TYPE, SWAP_DATA_TYPE } from "../actions/catalogue.action";
+import { DOWNLOAD_FILTERS_DATA_TYPE, DOWNLOAD_NEW_CATALOGUE_PAGE_DATA_TYPE, DOWNLOAD_PREVIOUS_CATALOGUE_PAGE_DATA_TYPE, SET_CATALOGUE_DATA_LOADING_TYPE, SET_FILTERS_LOADING_TYPE, SHOW_FILTERED_BOOKS_TYPE, SWAP_DATA_TYPE } from "../actions/catalogue.action";
 
 const initialState = {
     catalogueSliderData: {
@@ -10,8 +10,9 @@ const initialState = {
     numberOfBooks: 0,
     numberOfBooksPerPage: 15,
     isDataLoading: true,
-    isGenresLoading: false,
-    genresArray: []
+    isFiltersLoading: false,
+    filters: {},
+    showFiltered: false
 };
 
 const CatalogueReducer = (state = initialState, action) => {
@@ -24,6 +25,7 @@ const CatalogueReducer = (state = initialState, action) => {
                     currentData: action.payload.currentData,
                     currentPage: action.payload.currentPage
                 },
+                numberOfBooksPerPage:action.payload.book_count_page, 
                 numberOfBooks: action.payload.numberOfBooks
             };
         }
@@ -37,10 +39,10 @@ const CatalogueReducer = (state = initialState, action) => {
                 }
             };
         }
-        case DOWNLOAD_GENRES_DATA_TYPE: {
+        case DOWNLOAD_FILTERS_DATA_TYPE: {
             return {
                 ...state,
-                genresArray: action.payload.genresArray
+                filters: action.payload.filters
             };
         }
 
@@ -48,8 +50,8 @@ const CatalogueReducer = (state = initialState, action) => {
             return { ...state, isDataLoading: action.payload };
         }
 
-        case SET_GENRES_LOADING_TYPE: {
-            return { ...state, isGenresLoading: action.payload };
+        case SET_FILTERS_LOADING_TYPE: {
+            return { ...state, isFiltersLoading: action.payload };
         }
 
         case SWAP_DATA_TYPE: {
@@ -63,7 +65,9 @@ const CatalogueReducer = (state = initialState, action) => {
                 }
             };
         }
-
+        case SHOW_FILTERED_BOOKS_TYPE: {
+            return { ...state, showFiltered: action.payload };
+        }
         default:
             return state;
     }
@@ -75,12 +79,12 @@ export const getCurrentDataSelector = (state) => state.catalogueReducer.catalogu
 export const getPreviousDataSelector = (state) => state.catalogueReducer.catalogueSliderData.previousData;
 
 export const getIsDataLoadingSelector = (state) => state.catalogueReducer.isDataLoading;
-export const getIsGenresLoadingSelector = (state) => state.catalogueReducer.isGenresLoading;
+export const getIsFiltersLoadingSelector = (state) => state.catalogueReducer.isFiltersLoading;
 
 export const getNumberOfBooksSelector = (state) => state.catalogueReducer.numberOfBooks;
 export const getNumberOfBooksPerPageSelector = (state) => state.catalogueReducer.numberOfBooksPerPage;
 
-export const areGenresLoadedSelector = (state) => state.catalogueReducer.genresArray?.length > 0;
-export const getGenresSelector = (state) => state.catalogueReducer.genresArray;
+export const getFiltersSelector = (state) => state.catalogueReducer.filters;
+export const getIsFilteredSelector = (state) => state.catalogueReducer.showFiltered;
 
 export default CatalogueReducer;

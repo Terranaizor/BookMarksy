@@ -5,11 +5,9 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
     const baseUrl = 'http://localhost:8000/api/books/links/';
-
     const [fullResponse, setFullResponse] = useState(null);
     const [links, setLinks] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [initialCataloguePage, setInitialCataloguePage] = useState(1);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,7 +28,7 @@ export const DataProvider = ({ children }) => {
     }, [])
 
     return (
-        <DataContext.Provider value={{ fullResponse, links, loading, initialCataloguePage, setInitialCataloguePage }}>
+        <DataContext.Provider value={{ fullResponse, links, loading }}>
             {children}
         </DataContext.Provider>
     );
