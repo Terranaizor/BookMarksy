@@ -2,10 +2,12 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { thunk } from "redux-thunk";
 import CatalogueReducer from './reducers/catalogue.reducer';
 import LinksReducer from './reducers/links.reducer';
+import SlidersReducer from './reducers/sliders.reducer';
 
 const reducers = {
     catalogueReducer: CatalogueReducer,
-    linksReducer: LinksReducer
+    linksReducer: LinksReducer,
+    slidersReducer: SlidersReducer
 }
 
 const rootReducers = combineReducers(reducers);
