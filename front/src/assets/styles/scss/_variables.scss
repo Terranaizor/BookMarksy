@@ -5,20 +5,22 @@ $title-font: "Roboto Condensed", sans-serif;
 $text-font: "Merriweather", serif;
 
 $basic-padding-md: 60px;
- 
-$Xsm: 0px;
-$sm: 576px;
+$basic-padding-sm: 30px;
+
 $md: 768px;
-$lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
 
 
 $book-section-width-Xsm: 60px;
-$book-section-width-sm: 60px;
+$book-section-width-sm: 45%;
 $book-section-width-md: 175px;
 $book-section-width-lg: 60px;
 $book-section-width-xl: 60px;
 $book-section-width-xxl: 60px;
 
+$single-book-height-sm: 250px;
+$single-book-width-sm: 100%;
+
 $single-book-height-md: 300px;
+$single-book-width-md: 175px;

@@ -8,10 +8,16 @@
     margin-right: 15px;
     width: $book-section-width-md !important;
     margin: 20px 15px 20px 0;
+    @media (max-width: $md) {
+        width: $book-section-width-sm !important;
+    }
 }
 .splide__slide img {
     height: 200px;
     object-fit: contain;
+    @media (max-width: $md) {
+        height: 180px;
+    }
 }
 
 .slider-title {
