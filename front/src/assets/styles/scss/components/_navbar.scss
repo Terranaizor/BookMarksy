@@ -1,14 +1,14 @@
 .main-nav {
     position: sticky;
     top: 0;
-    height: 60px;
+    height: $nav-height;
     background-color: var(--background-color);
     z-index: 1;
     @include flex-container(row, 0px, center, space-between);
-    padding: 10px $basic-padding-md;
+    padding: 10px $basic-padding;
 
     @media (max-width: $md) {
-        padding: 10px $basic-padding-sm;
+        padding: 10px $small-padding;
     }
     div {
         @include flex-container(row, 0px, center);
@@ -16,7 +16,7 @@
             @include img-base();
         }
         h1 {
-            @include text-base(var(--title-color), $font-weight: 300);
+            @include text-base(var(--title-color), $font-weight: 300, $font-size: $size-30);
         }
     }
 }

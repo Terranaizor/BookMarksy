@@ -1,17 +1,19 @@
 .slider-section {
-    width: 80%;
-    margin: 5px auto;
     border-bottom: 1px solid var(--accent-color);
-    margin-bottom: 20px;
+    margin: 5px auto;
+    margin-bottom: $basic-margin-y-md;
+    width: 80%;
 }
+
 .splide__slide {
+    margin: $basic-margin-y-md 15px $basic-margin-y-md 0;
     margin-right: 15px;
     width: $book-section-width-md !important;
-    margin: 20px 15px 20px 0;
     @media (max-width: $md) {
         width: $book-section-width-sm !important;
     }
 }
+
 .splide__slide img {
     height: 200px;
     object-fit: contain;
@@ -21,6 +23,6 @@
 }
 
 .slider-title {
-    @include text-base(var(--title-color), $title-font, 400, 20px);
+    @include text-base(var(--title-color), $title-font, 400, $size-20);
     text-transform: capitalize;
 }

@@ -1,94 +1,105 @@
 .login-popup {
-    width: 100%;
+    @include flex-container();
+    background-color: var(--shadow-color);
     height: 100%;
     position: fixed;
-    @include flex-container();
+    width: 100%;
     z-index: 2;
-    background-color: var(--shadow-color);
 }
 
 .login-popup-container {
-    width: 30%;
-    padding: 20px 40px;
     background-color: var(--background-color);
     border: 2px solid var(--secondary-color);
+    padding: 20px 40px;
+    width: 30%;
+
     @media (max-width: $md) {
+        padding: 15px $small-padding;
         width: 80%;
-        padding: 15px 30px;
     }
+
     button {
-        width: 100%;
-        padding: 10px;
         background-color: var(--button-color);
-        @include text-base(var(--button-text-color), $text-font, 200, 16px);
         border: none;
         border-radius: 4px;
-        margin-bottom: 13px;
         cursor: pointer;
+        margin-bottom: 13px;
+        padding: 10px;
+        width: 100%;
+        @include text-base(var(--button-text-color), $text-font, 200, $size-15);
     }
+
     .signup-login-link {
         text-align: center;
-        @include text-base(var(--text-color), $text-font, 200, 12px);
+        @include text-base(var(--text-color), $text-font, 200, $size-13);
     }
+
     span {
-        @include text-base(var(--text-color), $text-font, 200, 12px);
-        text-decoration: underline;
         cursor: pointer;
+        margin-left: 5px;
+        text-decoration: underline;
+        @include text-base(var(--text-color), $text-font, 200, $size-13);
     }
 }
 
 .login-popup-title {
     p {
-        @include text-base(var(--text-color), $text-font, 200, 15px);
         margin-bottom: 10px;
+        @include text-base(var(--text-color), $text-font, 200, $size-15);
     }
+
     h3 {
-        @include text-base(var(--title-color), $font-size: 30px);
+        @include text-base(var(--title-color), $font-size: $size-30);
     }
+
     .login-title--subtext {
-        @include text-base(var(--subtext-color), $text-font, 200, 12px);
         margin-bottom: 20px;
+        @include text-base(var(--subtext-color), $text-font, 200, $size-10);
     }
 }
 
 .input-group {
-    margin-bottom: 20px;
-    label {
-        display: block;
-        margin-bottom: 5px;
-        @include text-base(var(--text-color), $text-font, 400, 14px);
-    }
+    margin-bottom: $basic-margin-y-md;
+
     input {
-        width: 100%;
-        padding: 12px 10px;
+        background-color: var(--input-bc-color);
         border: 1px solid var(--button-color);
         border-radius: 4px;
-        background-color: var(--input-bc-color);
-        @include text-base(var(--text-color), $text-font, 200, 14px);
+        padding: 12px 10px;
+        width: 100%;
+        @include text-base(var(--text-color), $text-font, 200, $size-15);
 
         &::placeholder {
             color: var(--button-color);
             opacity: 1;
         }
+
         &:focus {
             background-color: var(--button-focus-color);
             outline: none;
         }
     }
 
- 
+    label {
+        display: block;
+        margin-bottom: 5px;
+        @include text-base(var(--text-color), $text-font, 400, $size-15);
+    }
 }
+
 .password-group {
-    padding-right: 10px;
     @include flex-container(row, 0px, $align-items: center, $justify-content: center);
     border: 1px solid var(--button-color);
     border-radius: 4px;
+    padding-right: 10px;
+
     input {
         border: none;
         margin-right: 10px;
     }
 }
-.error-message{
-    @include text-base(var(--error-color), $text-font, 400, 12px);
+
+.error-message {
     margin: 5px 10px;
+    @include text-base(var(--error-color), $text-font, 400, $size-10);
 }

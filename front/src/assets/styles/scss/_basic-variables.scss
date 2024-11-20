@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+$title-font: "Roboto Condensed", sans-serif;
+$text-font: "Merriweather", serif;
+
+$size-45: 45px;
+$size-40: 40px;
+$size-35: 35px;
+$size-30: 30px;
+$size-20: 20px;
+$size-15: 15px;
+$size-10: 10px;
+$size-13: 13px;
+
+$nav-height: 60px;
+
+$basic-padding: 60px;
+$small-padding: 30px;
+
+// screens
+$md: 768px;
+$xl: 1200px;
+$xxl: 1400px;
+
+// basic
+$basic-margin-x: auto;
+$basic-border-radius: 2rem;
+$box-shadow: 0 4px 10px var(--shadow-color);
+$basic-gap: 20px;
+$small-gap: 10px;
+
+// medium screen
+$basic-margin-y-md: 20px;
+$large-padding-container-md: 40px 10px;
+
+$smaller-container-width: 85%;
+// text
+// blur element
+$width-blur-container-md: 50%;
+//footer
+$footer-padding-md: 40px 90px;
+$footer-margin-top-md: 40px;
+// ...
+// ...
+// ...
+// ...
+// small screen
+$basic-gap-sm: 10px;
+$basic-margin-y-sm: 20px;
+$large-padding-container-sm: 20px 10px;
+// text
+
+// blur element
+$width-blur-container-sm: 90%;
+//footer
+$footer-padding-sm: 10px 20px;
+$footer-margin-top-sm: 30px;
+// ...
+// ...
+// ...
+// ...
+// ...
+
+$book-section-width-sm: 45%;
+$single-book-height-sm: 250px;
+$single-book-width-sm: 100%;
+
+$book-section-width-md: 175px;
+$single-book-width-md: 175px;
+$single-book-items-width-md: 100%;
