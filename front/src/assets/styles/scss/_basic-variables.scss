@@ -8,10 +8,11 @@ $size-45: 45px;
 $size-40: 40px;
 $size-35: 35px;
 $size-30: 30px;
+$size-25: 25px;
 $size-20: 20px;
 $size-15: 15px;
-$size-10: 10px;
 $size-13: 13px;
+$size-10: 10px;
 
 $nav-height: 60px;
 
@@ -21,46 +22,24 @@ $small-padding: 30px;
 // screens
 $md: 768px;
 $xl: 1024px;
-//....
 $xxl: 1400px;
-$xxl: 1920px;
+$xxxl: 1920px;
  
-
 // basic
 $basic-margin-x: auto;
 $basic-border-radius: 2rem;
 $box-shadow: 0 4px 10px var(--shadow-color);
 $basic-gap: 20px;
 $small-gap: 10px;
+$smaller-container-width: 85%;
+$basic-margin-y: 20px;
 
 // medium screen
-$basic-margin-y-md: 20px;
 $large-padding-container-md: 40px 10px;
 
-$smaller-container-width: 85%;
-// text
-
-//footer
-$footer-padding-md: 40px 90px;
-$footer-margin-top-md: 40px;
-// ...
-// ...
-// ...
-// ...
 // small screen
-$basic-gap-sm: 10px;
-$basic-margin-y-sm: 20px;
 $large-padding-container-sm: 20px 10px;
-// text
 
-//footer
-$footer-padding-sm: 10px 20px;
-$footer-margin-top-sm: 30px;
-// ...
-// ...
-// ...
-// ...
-// ...
 
 $book-section-width-sm: 45%;
 $single-book-height-sm: 250px;
@@ -68,4 +47,6 @@ $single-book-width-sm: 100%;
 
 $book-section-width-md: 175px;
 $single-book-width-md: 175px;
-$single-book-items-width-md: 100%;
+
+$book-section-width-xxl: 195px;
+$single-book-width-xxl:195px;

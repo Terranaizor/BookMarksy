@@ -21,6 +21,9 @@ body {
 
 .icon {
     @include icon-base(20px, 20px, var(--accent-color));
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+        @include icon-base(25px, 25px, var(--accent-color));
+      }
 }
 
 @import "./scss/components/navbar";

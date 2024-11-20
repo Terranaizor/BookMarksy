@@ -4,7 +4,7 @@
   border-radius: $basic-border-radius;
   box-shadow: $box-shadow;
   line-height: 200%;
-  margin: $basic-margin-y-md $basic-margin-x;
+  margin: $basic-margin-y $basic-margin-x;
   padding: $large-padding-container-md;
   text-align: center;
   width: 50%;
@@ -12,7 +12,7 @@
   @include text-base(var(--text-color), $text-font, $font-size: $size-20);
 
   @media (max-width: $md) {
-    gap: $basic-gap-sm;
+    gap: $small-gap;
     font-size: $size-15;
     padding: $large-padding-container-sm;
     width: 90%;
@@ -51,11 +51,11 @@ h2 {
   display: grid;
   gap: $basic-gap;
   grid-template-columns: repeat(3, 1fr);
-  margin: $basic-margin-y-md $basic-margin-x;
+  margin: $basic-margin-y $basic-margin-x;
   width: $smaller-container-width;
 
   @media (max-width: $md) {
-    gap: $basic-gap-sm;
+    gap: $small-gap;
     grid-template-columns: repeat(2, 1fr);
     margin: 5px $basic-margin-x;
   }
@@ -77,7 +77,7 @@ h2 {
     }
 
     @media (max-width: $md) {
-      gap: $basic-gap-sm;
+      gap: $small-gap;
       padding: $large-padding-container-sm;
     }
 
@@ -102,15 +102,15 @@ h2 {
 footer {
   @include flex-container(row, 0px, center, space-between);
   background-color: var(--footer-color);
-  margin-top: $footer-margin-top-md;
-  padding: $footer-padding-md;
+  margin-top: 40px;
+  padding: 40px 90px;
 
   @media (max-width: $md) {
     align-items: flex-start;
     flex-direction: column;
     gap: $basic-gap;
-    margin-top: $footer-margin-top-sm;
-    padding: $footer-padding-sm;
+    margin-top: 30px;
+    padding: 10px 20px;
   }
 
   ul {
@@ -132,6 +132,9 @@ footer {
   li a {
     @include text-base(var(--active-text-color), $font-weight: 300, $font-size: $size-15);
     text-decoration: none;
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+      font-size: $size-20;
+    }
   }
 }
 
@@ -156,6 +159,9 @@ footer {
 
   p {
     @include text-base(var(--text-color), $font-weight: 300, $font-size: $size-15);
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+      font-size: $size-20;
+    }
     padding-left: $small-padding;
   }
 }
@@ -172,7 +178,9 @@ footer {
     @include btn-base();
     @include text-base(var(--active-text-color), $font-weight: 400, $font-size: $size-15);
     background-color: var(--background-color);
-
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+      font-size: $size-20;
+    }
     @media (max-width: $md) {
       width: 100px;
     }
@@ -182,7 +190,9 @@ footer {
     @include btn-base();
     @include text-base(var(--button-text-color), $font-weight: 400, $font-size: $size-15);
     background-color: var(--button-color);
-
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+      font-size: $size-20;
+    }
     @media (max-width: $md) {
       width: 100px;
     }
