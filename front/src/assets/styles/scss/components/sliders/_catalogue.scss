@@ -71,6 +71,9 @@
             gap: $small-gap;
             width: 80vw;
         }
+        @media (min-width: $md) and (max-width: $xl) {
+            width: 60vw;
+        }
         button {
             @include text-base(var(--button-color), $text-font, 200, $size-20);
             background-color: var(--section-bc-color);
@@ -107,6 +110,7 @@
             grid-template-columns: repeat(2, 1fr);
             max-height: 150px;
             overflow-y: scroll;
+            padding: 5px;
         }
         .filter-menu__section-title {
             @include text-base(var(--title-color), $title-font, $font-size: 25px);

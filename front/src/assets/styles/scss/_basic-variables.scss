@@ -20,8 +20,11 @@ $small-padding: 30px;
 
 // screens
 $md: 768px;
-$xl: 1200px;
+$xl: 1024px;
+//....
 $xxl: 1400px;
+$xxl: 1920px;
+ 
 
 // basic
 $basic-margin-x: auto;
@@ -36,8 +39,7 @@ $large-padding-container-md: 40px 10px;
 
 $smaller-container-width: 85%;
 // text
-// blur element
-$width-blur-container-md: 50%;
+
 //footer
 $footer-padding-md: 40px 90px;
 $footer-margin-top-md: 40px;
@@ -51,8 +53,6 @@ $basic-margin-y-sm: 20px;
 $large-padding-container-sm: 20px 10px;
 // text
 
-// blur element
-$width-blur-container-sm: 90%;
 //footer
 $footer-padding-sm: 10px 20px;
 $footer-margin-top-sm: 30px;

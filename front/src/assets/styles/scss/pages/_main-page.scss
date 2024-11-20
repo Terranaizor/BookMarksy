@@ -7,7 +7,7 @@
   margin: $basic-margin-y-md $basic-margin-x;
   padding: $large-padding-container-md;
   text-align: center;
-  width: $width-blur-container-md;
+  width: 50%;
 
   @include text-base(var(--text-color), $text-font, $font-size: $size-20);
 
@@ -15,9 +15,11 @@
     gap: $basic-gap-sm;
     font-size: $size-15;
     padding: $large-padding-container-sm;
-    width: $width-blur-container-sm;
+    width: 90%;
   }
-
+  @media (min-width: $md) and (max-width: $xl) {
+    width: 70%;
+  }
   .blur {
     background-color: var(--secondary-color);
     border-radius: 4px;
@@ -120,6 +122,10 @@ footer {
       flex-direction: column;
       gap: $basic-gap;
       margin-left: 30px;
+    }
+    @media (min-width: $md) and (max-width: $xl) {
+      flex-direction: column;
+      gap: $basic-gap;
     }
   }
 

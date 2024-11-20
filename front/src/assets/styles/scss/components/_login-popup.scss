@@ -17,7 +17,9 @@
         padding: 15px $small-padding;
         width: 80%;
     }
-
+    @media (min-width: $md) and (max-width: $xl) {
+        width: 50%;
+    }
     button {
         background-color: var(--button-color);
         border: none;

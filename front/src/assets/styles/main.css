@@ -195,6 +195,11 @@ body {
     width: 90%;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .blur-container {
+    width: 70%;
+  }
+}
 .blur-container .blur {
   background-color: var(--secondary-color);
   border-radius: 4px;
@@ -323,6 +328,12 @@ footer ul {
     margin-left: 30px;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  footer ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
 footer li a {
   color: var(--active-text-color);
   font-family: "Roboto Condensed", sans-serif;
@@ -446,6 +457,11 @@ footer li a {
   .login-popup-container {
     padding: 15px 30px;
     width: 80%;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .login-popup-container {
+    width: 50%;
   }
 }
 .login-popup-container button {
@@ -660,6 +676,11 @@ footer li a {
     width: 80vw;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .filter-menu .filter-menu__dropdown {
+    width: 60vw;
+  }
+}
 .filter-menu .filter-menu__dropdown button {
   color: var(--button-color);
   font-family: "Merriweather", serif;
@@ -711,6 +732,7 @@ footer li a {
   grid-template-columns: repeat(2, 1fr);
   max-height: 150px;
   overflow-y: scroll;
+  padding: 5px;
 }
 .filter-menu .filter-menu__section .filter-menu__section-title {
   color: var(--title-color);
