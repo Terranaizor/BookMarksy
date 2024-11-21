@@ -38,6 +38,9 @@
             @media (min-width: $xxl) and (max-width: $xxxl) {
                 font-size: $size-20;
             }
+            @media (min-width: $xxxl) {
+                font-size: $size-25;
+            }
         }
     }
 }
@@ -89,30 +92,43 @@
             @media (min-width: $xxl) and (max-width: $xxxl) {
                 font-size: $size-25;
             }
+            @media (min-width: $xxxl) {
+                font-size: $size-30;
+            }
         }
     }
     .filter-menu__section {
-        @include text-base(var(--text-color), $text-font, 200, 20px);
+        @include text-base(var(--text-color), $text-font, 200, $size-20);
         min-width: 40vw;
         @media (max-width: $md) {
-            font-size: 15px;
+            font-size: $size-15;
         }
         @media (min-width: $xxl) and (max-width: $xxxl) {
-            font-size: 25px;
+            font-size: $size-25;
+        }
+        @media (min-width: $xxxl) {
+            font-size: $size-30;
         }
         .filter-menu__checkbox {
             accent-color: var(--accent-color);
             height: 15px;
             margin-right: 5px;
             width: 15px;
+            @media (min-width: $xxxl) {
+                width: 25px;
+                height: 25px;
+            }
         }
         .filter-menu__label {
-            @include text-base(var(--text-color), $text-font, $font-size: 15px);
+            @include text-base(var(--text-color), $text-font, $font-size: $size-15);
             @media (max-width: $md) {
-                font-size: 15px;
+                font-size: $size-15;
             }
             @media (min-width: $xxl) and (max-width: $xxxl) {
-                font-size: 20px;
+                font-size: $size-20;
+            }
+            @media (min-width: $xxxl) {
+                font-size: $size-25;
             }
         }
         .filter-menu__options {
@@ -135,6 +151,10 @@
             @media (min-width: $xxl) and (max-width: $xxxl) {
                 font-size: $size-30;
             }
+            @media (min-width: $xxxl) {
+                font-size: $size-35;
+                margin-bottom: 15px;
+            }
         }
         ::-webkit-scrollbar {
             width: 4px;
@@ -149,65 +169,6 @@
             &:hover {
                 background: var(--separators-color);
             }
-        }
-    }
-}
-
-.filter-menu__section {
-    min-width: 40vw;
-    @include text-base(var(--text-color), $text-font, 200, $size-20);
-    @media (max-width: $md) {
-        font-size: $size-15;
-    }
-    @media (min-width: $xxl) and (max-width: $xxxl) {
-        font-size: $size-25;
-    }
-    .filter-menu__section-title {
-        @include text-base(var(--title-color), $title-font, $font-size: 25px);
-        border-bottom: 1px solid var(--accent-color);
-        display: inline-block;
-        margin-bottom: 10px;
-        @media (max-width: $md) {
-            font-size: $size-20;
-        }
-    }
-    .filter-menu__options {
-        border-bottom: 1px solid var(--accent-color);
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        overflow-y: scroll;
-        max-height: 150px;
-    }
-
-    .filter-menu__checkbox {
-        accent-color: var(--accent-color);
-        width: 15px;
-        height: 15px;
-        margin-right: 5px;
-    }
-
-    .filter-menu__label {
-        @include text-base(var(--text-color), $text-font, $font-size: $size-15);
-        @media (min-width: $xxl) and (max-width: $xxxl) {
-            font-size: $size-20;
-        }
-    }
-
-    ::-webkit-scrollbar {
-        width: 4px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: var(--section-bc-color);
-        border-radius: 2rem;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: var(--accent-color);
-        border-radius: 2rem;
-        &:hover {
-            background: var(--separators-color);
         }
     }
 }
@@ -227,6 +188,9 @@
         gap: $small-gap;
         grid-template-columns: repeat(auto-fit, $book-section-width-xxl);
     }
+    @media (min-width: $xxxl) {
+        grid-template-columns: repeat(auto-fit, $book-section-width-xxxl);
+    }
 }
 
 .single-book-section {
@@ -235,9 +199,6 @@
     cursor: pointer;
     padding: 15px;
     width: $single-book-width-md;
-    @media (min-width: $xxl) and (max-width: $xxxl) {
-        width: $single-book-width-xxl;
-    }
     &:hover {
         box-shadow: $box-shadow;
         transition: all 0.1s ease 0s;
@@ -248,19 +209,34 @@
         padding: 5px;
         width: $single-book-width-sm;
     }
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+        width: $single-book-width-xxl;
+    }
+    @media (min-width: $xxxl) {
+        width: $single-book-width-xxxl;
+    }
     .actions-bar {
         @include flex-container(row, $basic-gap, center, center);
         margin-top: 5px;
         width: 100%;
+        @media (min-width: $xxxl) {
+            margin-top: 10px;
+        }
     }
     .book-rating {
         @include flex-container(row, 3px, center, center);
         width: 100%;
+        @media (min-width: $xxxl) {
+            margin-top: 5px;
+        }
     }
     .icon {
         @include icon-base(19px, 19px, var(--accent-color));
         @media (min-width: $xxl) and (max-width: $xxxl) {
             @include icon-base(23px, 23px, var(--accent-color));
+        }
+        @media (min-width: $xxxl) {
+            @include icon-base(27px, 27px, var(--accent-color));
         }
     }
     .single-book-img {
@@ -284,6 +260,9 @@
         @media (min-width: $xxl) and (max-width: $xxxl) {
             font-size: $size-20;
         }
+        @media (min-width: $xxxl) {
+            font-size: $size-25;
+        }
     }
     .single-book-title {
         @include text-base(var(--title-color), $title-font, 400, $size-20);
@@ -294,6 +273,9 @@
         width: 100%;
         @media (min-width: $xxl) and (max-width: $xxxl) {
             font-size: $size-25;
+        }
+        @media (min-width: $xxxl) {
+            font-size: $size-30;
         }
     }
 }
@@ -315,6 +297,10 @@
         @include btn-base(40px, 40px, 10px, 1px solid var(--button-color), 0);
         font-size: $size-20;
     }
+    @media (min-width: $xxxl) {
+        @include btn-base(45px, 45px, 10px, none, 0);
+        font-size: $size-25;
+    }
 }
 
 .rs-pagination-btn-active {
@@ -327,5 +313,9 @@
     @media (min-width: $xxl) and (max-width: $xxxl) {
         @include btn-base(40px, 40px, 10px, none, 0);
         font-size: $size-20;
+    }
+    @media (min-width: $xxxl) {
+        @include btn-base(45px, 45px, 10px, none, 0);
+        font-size: $size-25;
     }
 }

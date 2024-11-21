@@ -4,6 +4,7 @@
 $title-font: "Roboto Condensed", sans-serif;
 $text-font: "Merriweather", serif;
 
+$size-50: 50px;
 $size-45: 45px;
 $size-40: 40px;
 $size-35: 35px;
@@ -15,6 +16,7 @@ $size-13: 13px;
 $size-10: 10px;
 
 $nav-height: 60px;
+$nav-max-height: 80px;
 
 $basic-padding: 60px;
 $small-padding: 30px;
@@ -24,11 +26,12 @@ $md: 768px;
 $xl: 1024px;
 $xxl: 1400px;
 $xxxl: 1920px;
- 
+
 // basic
 $basic-margin-x: auto;
 $basic-border-radius: 2rem;
 $box-shadow: 0 4px 10px var(--shadow-color);
+$big-gap: 40px;
 $basic-gap: 20px;
 $small-gap: 10px;
 $smaller-container-width: 85%;
@@ -40,7 +43,6 @@ $large-padding-container-md: 40px 10px;
 // small screen
 $large-padding-container-sm: 20px 10px;
 
-
 $book-section-width-sm: 45%;
 $single-book-height-sm: 250px;
 $single-book-width-sm: 100%;
@@ -49,4 +51,7 @@ $book-section-width-md: 175px;
 $single-book-width-md: 175px;
 
 $book-section-width-xxl: 195px;
-$single-book-width-xxl:195px;
+$single-book-width-xxl: 195px;
+
+$book-section-width-xxxl: 245px;
+$single-book-width-xxxl: 245px;

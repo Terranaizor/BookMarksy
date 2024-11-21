@@ -20,6 +20,9 @@
     @media (min-width: $md) and (max-width: $xl) {
         width: 50%;
     }
+    @media (min-width: $xxxl) {
+        padding: 25px 40px;
+    }
     button {
         background-color: var(--button-color);
         border: none;
@@ -29,6 +32,10 @@
         padding: 10px;
         width: 100%;
         @include text-base(var(--button-text-color), $text-font, 200, $size-15);
+        @media (min-width: $xxxl) {
+            padding: 15px;
+            font-size: $size-20;
+        }
     }
 
     .signup-login-link {
@@ -36,6 +43,9 @@
         @include text-base(var(--text-color), $text-font, 200, $size-13);
         @media (min-width: $xxl) and (max-width: $xxxl) {
             font-size: $size-15;
+        }
+        @media (min-width: $xxxl) {
+            font-size: $size-20;
         }
     }
 
@@ -47,6 +57,9 @@
         @media (min-width: $xxl) and (max-width: $xxxl) {
             font-size: $size-15;
         }
+        @media (min-width: $xxxl) {
+            font-size: $size-20;
+        }
     }
 }
 
@@ -57,12 +70,18 @@
         @media (min-width: $xxl) and (max-width: $xxxl) {
             font-size: $size-20;
         }
+        @media (min-width: $xxxl) {
+            font-size: $size-25;
+        }
     }
 
     h3 {
         @include text-base(var(--title-color), $font-size: $size-30);
         @media (min-width: $xxl) and (max-width: $xxxl) {
             font-size: $size-35;
+        }
+        @media (min-width: $xxxl) {
+            font-size: $size-40;
         }
     }
 
@@ -72,12 +91,17 @@
         @media (min-width: $xxl) and (max-width: $xxxl) {
             font-size: $size-15;
         }
+        @media (min-width: $xxxl) {
+            font-size: $size-20;
+        }
     }
 }
 
 .input-group {
     margin-bottom: $basic-margin-y;
-
+    @media (min-width: $xxxl) {
+        margin-bottom: calc($basic-margin-y + 5px);
+    }
     input {
         background-color: var(--input-bc-color);
         border: 1px solid var(--button-color);
@@ -87,6 +111,9 @@
         @include text-base(var(--text-color), $text-font, 200, $size-15);
         @media (min-width: $xxl) and (max-width: $xxxl) {
             font-size: $size-20;
+        }
+        @media (min-width: $xxxl) {
+            font-size: $size-25;
         }
         &::placeholder {
             color: var(--button-color);
@@ -105,6 +132,9 @@
         @include text-base(var(--text-color), $text-font, 400, $size-15);
         @media (min-width: $xxl) and (max-width: $xxxl) {
             font-size: $size-20;
+        }
+        @media (min-width: $xxxl) {
+            font-size: $size-25;
         }
     }
 }
@@ -126,5 +156,8 @@
     @include text-base(var(--error-color), $text-font, 400, $size-10);
     @media (min-width: $xxl) and (max-width: $xxxl) {
         font-size: $size-15;
+    }
+    @media (min-width: $xxxl) {
+        font-size: $size-20;
     }
 }

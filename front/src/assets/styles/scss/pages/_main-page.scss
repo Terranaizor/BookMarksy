@@ -20,6 +20,9 @@
   @media (min-width: $md) and (max-width: $xl) {
     width: 70%;
   }
+  @media (min-width: $xxxl){
+    font-size: $size-25;
+  }
   .blur {
     background-color: var(--secondary-color);
     border-radius: 4px;
@@ -34,6 +37,9 @@
     @media (max-width: $md) {
       font-size: $size-15;
     }
+    @media (min-width: $xxxl){
+      font-size: $size-25;
+    }
   }
 }
 
@@ -44,6 +50,9 @@ h2 {
 
   @media (max-width: $md) {
     font-size: $size-30;
+  }
+  @media (min-width: $xxxl){
+    font-size: $size-50;
   }
 }
 
@@ -80,11 +89,16 @@ h2 {
       gap: $small-gap;
       padding: $large-padding-container-sm;
     }
-
+    @media (min-width: $xxxl){
+      @include flex-container(column, $big-gap, center, center);
+    }
     img {
       cursor: auto !important;
       height: 50px;
       object-fit: contain;
+      @media (min-width: $xxxl){
+        height: 80px;
+      }
     }
 
     p {
@@ -94,6 +108,9 @@ h2 {
 
       @media (max-width: $md) {
         font-size: $size-15;
+      }
+      @media (min-width: $xxxl){
+        font-size: $size-25;
       }
     }
   }
@@ -135,6 +152,10 @@ footer {
     @media (min-width: $xxl) and (max-width: $xxxl) {
       font-size: $size-20;
     }
+    @media (min-width: $xxxl){
+      font-size: $size-25;
+      font-weight: 400;
+    }
   }
 }
 
@@ -151,16 +172,25 @@ footer {
     @media (max-width: $md) {
       font-size: $size-35;
     }
+    @media (min-width: $xxxl){
+      font-size: $size-50;
+    }
   }
 
   img {
     @include img-base(45px, 30px);
+    @media (min-width: $xxxl){
+      @include img-base(55px);
+    }
   }
 
   p {
     @include text-base(var(--text-color), $font-weight: 300, $font-size: $size-15);
     @media (min-width: $xxl) and (max-width: $xxxl) {
       font-size: $size-20;
+    }
+    @media (min-width: $xxxl){
+      font-size: $size-25;
     }
     padding-left: $small-padding;
   }
@@ -184,6 +214,10 @@ footer {
     @media (max-width: $md) {
       width: 100px;
     }
+    @media (min-width: $xxxl){
+      font-size: $size-25;
+      padding: 15px 20px,
+    }
   }
 
   .register {
@@ -195,6 +229,10 @@ footer {
     }
     @media (max-width: $md) {
       width: 100px;
+    }
+    @media (min-width: $xxxl){
+      font-size: $size-25;
+      padding: 15px 20px,
     }
   }
 }
