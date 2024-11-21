@@ -26,7 +26,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = get_user_model().objects.create_user(**validated_data)
-        Profile.objects.create(user=user, image="images/default-user.jpg")
+        Profile.objects.create(user=user, picture="images/default-user.jpg")
         return user
     
 

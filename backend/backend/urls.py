@@ -26,7 +26,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 urlpatterns = [
     path('admin/',admin.site.urls),
     path('api/',include('books.urls')),
-    # path('api/', include('user.urls')),
+    path('api/', include('user.urls')),
     # path('api/', include('chats.urls')),
     # path('api/', include('stats.urls')),
     # path('api/', include('notifications.urls')),

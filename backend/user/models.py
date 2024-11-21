@@ -8,4 +8,4 @@ class Profile(models.Model):
     picture = models.ImageField(upload_to='images/', default='images/default-user.jpg')
     last_activity = models.DateTimeField(null=True)
     savedBookEditions = models.ManyToManyField(BookEdition)
-    nickname = models.CharField(max_length=256)
+    nickname = models.CharField(default="", max_length=256)
