@@ -65,10 +65,12 @@ const SortControl = () => {
                 queryParams.push(`${category}=${encodeURIComponent(value)}`);
             });
         });
+        console.log("queryParams", queryParams)
         const apiUrl = `http://localhost:8000/api/books/filtered/?${queryParams.join("&")}&search=Twenty`;
         dispatch(getCatalogueThunk(apiUrl, initialCataloguePage));
         setApiUrlForSortCatalogue(apiUrl);
         dispatch(showFilteredAction(true));
+        console.log("apiUrl", apiUrl)
     };
 
     return (
@@ -78,7 +80,7 @@ const SortControl = () => {
                     <FontAwesomeIcon icon={faSearch} className="icon icon-focus" />
                     <input
                         type="text"
-                        placeholder={"Search book name, author, edition..."}
+                        placeholder={"Search book, author, edition..."}
                     />
                 </div>
                 <div className="filter-menu" ref={dropdownRef}>

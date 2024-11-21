@@ -1,22 +1,41 @@
 .main-nav {
     position: sticky;
     top: 0;
-    height: 60px;
+    height: $nav-height;
     background-color: var(--background-color);
     z-index: 1;
     @include flex-container(row, 0px, center, space-between);
-    padding: 10px $basic-padding-md;
+    padding: 10px $basic-padding;
+
+    @media (max-width: $md) {
+        padding: 10px $small-padding;
+    }
+    @media (min-width: $xxxl) {
+        height: $nav-max-height;
+        padding: 20px $basic-padding;
+    }
     div {
         @include flex-container(row, 0px, center);
         img {
             @include img-base();
+            @media (min-width: $xxl) and (max-width: $xxxl) {
+                @include img-base(35px);
+            }
+            @media (min-width: $xxxl) {
+                @include img-base(55px);
+            }
         }
         h1 {
-            @include text-base(var(--title-color), $font-weight: 300);
+            @include text-base(var(--title-color), $font-weight: 300, $font-size: $size-30);
+            @media (min-width: $xxl) and (max-width: $xxxl) {
+                font-size: $size-35;
+            }
+            @media (min-width: $xxxl) {
+                font-size: $size-40;
+            }
         }
     }
 }
-
 
 .theme-select {
     position: relative;
