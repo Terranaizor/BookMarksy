@@ -24,7 +24,7 @@ const PaginationComponent = () => {
         next: true,
         first: true,
         last: true,
-        maxButtons: 5,
+        maxButtons: 4,
         layout: ['pager']
     };
 
@@ -70,6 +70,7 @@ const PaginationComponent = () => {
                 limit={numberOfBooksPerPage}
 
                 activePage={activePage}
+                maxButtons= {paginationData.maxButtons}
                 onChangePage={handlePageChange}
             />
         </div>

@@ -1,20 +1,48 @@
 .slider-section {
-    width: 80%;
-    margin: 5px auto;
     border-bottom: 1px solid var(--accent-color);
-    margin-bottom: 20px;
+    margin: 5px auto;
+    margin-bottom: $basic-margin-y;
+    width: 80%;
 }
+
 .splide__slide {
+    margin: $basic-margin-y 15px $basic-margin-y 0;
     margin-right: 15px;
     width: $book-section-width-md !important;
-    margin: 20px 15px 20px 0;
+    @media (max-width: $md) {
+        width: $book-section-width-sm !important;
+    }
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+        margin: $basic-margin-y 20px $basic-margin-y 0;
+        width: $book-section-width-xxl !important;
+    }
+    @media (min-width: $xxxl) {
+        margin: $basic-margin-y 20px $basic-margin-y 0;
+        width: $book-section-width-xxxl !important;
+    }
 }
+
 .splide__slide img {
     height: 200px;
     object-fit: contain;
+    @media (max-width: $md) {
+        height: 180px;
+    }
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+        height: 220px;
+    }
+    @media (min-width: $xxxl) {
+        height: 250px;
+    }
 }
 
 .slider-title {
-    @include text-base(var(--title-color), $title-font, 400, 20px);
+    @include text-base(var(--title-color), $title-font, 400, $size-20);
     text-transform: capitalize;
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+        font-size: $size-30;
+    }
+    @media (min-width: $xxxl) {
+        font-size: $size-35;
+    }
 }

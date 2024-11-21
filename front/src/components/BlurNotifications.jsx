@@ -9,7 +9,7 @@ const notifications = [
 
 const BlurNotifications = () => {
     return (
-        <section className="container">
+        <section className="blur-container">
             {notifications.map((item, index) => (
                 <p key={index}>
                     {item.message}{" "}
