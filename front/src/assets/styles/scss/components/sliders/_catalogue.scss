@@ -5,25 +5,30 @@
 }
 
 .catalogue-search {
-    @include flex-container(row, 0, flex-end, space-between);
-    background-color: var(--background-color);
     border-bottom: 1px solid var(--secondary-color);
-    border-radius: 5px 10px;
-    margin: 0 $basic-margin-x;
+    margin: 10px $basic-margin-x 0 $basic-margin-x;
     padding: 5px 10px;
     position: sticky;
     top: $nav-height;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--background-color);
     .catalogue-search--input {
-        @include flex-container(row, 5px, flex-end, space-between);
-        gap: 10px;
+        @include flex-container(row, 10px, center, center);
+        width: 60%;
+        padding: 5px;
+        border-bottom: 2px solid var(--accent-color);
+        .icon{
+            width:15px;
+        }
         input {
-            background-color: var(--background-color);
+            background-color: var(--section-bc-color);
             border: none;
             color: var(--accent-color);
             font-size: $size-15;
             outline: none;
-            padding: 20px 0px 0px 0px;
+            padding: 5px;
             width: 100%;
             &::placeholder {
                 color: var(--secondary-text-color);
@@ -69,6 +74,7 @@
         max-height: 80vh;
         min-height: 40vh;
         overflow-y: auto;
+        overflow-x: hidden;
         padding: 20px;
         position: absolute;
         right: 0;
@@ -140,22 +146,6 @@
             overflow-y: scroll;
             padding: 5px;
         }
-        .filter-menu__section-title {
-            @include text-base(var(--title-color), $title-font, $font-size: $size-25);
-            border-bottom: 1px solid var(--accent-color);
-            display: inline-block;
-            margin-bottom: 10px;
-            @media (max-width: $md) {
-                font-size: $size-20;
-            }
-            @media (min-width: $xxl) and (max-width: $xxxl) {
-                font-size: $size-30;
-            }
-            @media (min-width: $xxxl) {
-                font-size: $size-35;
-                margin-bottom: 15px;
-            }
-        }
         ::-webkit-scrollbar {
             width: 4px;
         }
@@ -170,6 +160,24 @@
                 background: var(--separators-color);
             }
         }
+    }
+}
+
+.filter-menu__section-title {
+    @include text-base(var(--title-color), $title-font, $font-size: $size-25);
+    border-bottom: 1px solid var(--accent-color);
+    display: inline-block;
+    margin-bottom: 10px;
+    text-align: left;
+    @media (max-width: $md) {
+        font-size: $size-20;
+    }
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+        font-size: $size-30;
+    }
+    @media (min-width: $xxxl) {
+        font-size: $size-35;
+        margin-bottom: 15px;
     }
 }
 
