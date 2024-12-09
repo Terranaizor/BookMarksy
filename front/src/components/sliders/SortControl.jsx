@@ -94,6 +94,7 @@ const SortControl = () => {
             // Adjust category names (e.g., Publishers -> publisher)
             const adjustedCategory = category === "Publishers" ? "publisher" : category;
             const lowerCaseCategory = adjustedCategory.toLowerCase();
+            if (!values) return; // Skip if values is null or undefined
             const lowerCaseValues = Array.isArray(values)
                 ? values.map((value) => value.toLowerCase()) // Handle multiple selected values
                 : [values.toLowerCase()];
