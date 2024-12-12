@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate
 from rest_framework.views import Response, status
 from rest_framework.authtoken.models import Token
 from user.serializers import *
+from rest_framework import generics
 
 # Create your views here.
 class LoginAPIView(APIView):
@@ -28,3 +29,18 @@ class RegisterAPIView(APIView):
                 return Response({'token': str(token), 'user' : UserSerializer(user).data}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetailView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class ProfileListView(generics.ListAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileListSerializer
+
+class ProfileDetailView(generics.RetrieveAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer

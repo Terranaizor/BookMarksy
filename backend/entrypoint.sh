@@ -10,7 +10,8 @@ python3 manage.py loaddata /app/backup/data_backup.json
 
 shutdown() {
   if python3 -c "import django; django.setup(); from django.db import connections; connections['default'].cursor().execute('SELECT 1')" &> /dev/null; then
-    python3 manage.py dumpdata  --output=/app/backup/data_backup.json
+    python3 manage.py dumpdata --exclude contenttypes --exclude auth.Permission --output=/app/backup/data_backup.json
+    python3 manage.py dumpdata auth.user --output=/app/backup/data_backup_user.json
     fi
 }
 # --exclude contenttypes --exclude auth.Permission

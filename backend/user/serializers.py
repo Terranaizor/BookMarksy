@@ -30,15 +30,16 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
     
 
-class FriendsListSerializer(serializers.ModelSerializer):
+class ProfileListSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
     class Meta:
         model = Profile
         fields = ['picture', 'username', 'nickname', 'url']
 
 
+
 class ProfileSerializer(serializers.ModelSerializer):
-    friends = FriendsListSerializer(many=True)
+    friends = ProfileListSerializer(many=True)
     picture = serializers.ImageField(max_length=None, use_url=True)
     savedBookEditions = BookEditionListSerializer(many=True)
     username = serializers.CharField(source='user.username', read_only=True)
