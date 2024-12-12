@@ -1,11 +1,19 @@
 import React from 'react';
-import BlurNotifications from '../components/BlurNotifications';
-import Community from '../components/Community';
+import { Community, Catalogue, BlurNotifications } from '../components/';
+import SliderComponent from '../components/sliders/SliderComponent';
+import { useSelector } from 'react-redux';
+import { getNewBooksSelector, getPopularBooksSelector } from '../store/reducers/sliders.reducer';
 
 const MainPage = () => {
+    const popularBooks = useSelector(getPopularBooksSelector);
+    const newBooks = useSelector(getNewBooksSelector);
+
     return (
         <div>
             <BlurNotifications />
+            <SliderComponent {...popularBooks} />
+            <SliderComponent {...newBooks} />
+            <Catalogue />
             <Community />
         </div>
     );

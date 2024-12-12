@@ -11,16 +11,17 @@ class GenreListSerializer(serializers.ModelSerializer):
         model = Genre
         fields = ['name']
     
-    def to_representation(self, instance):
-        return instance.name
-
+    # def to_representation(self, instance):
+    #     return {'Genre': [instance.name]}
 class PublisherListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Publisher
         fields = ['name']
 
-    def to_representation(self, instance):
-        return instance.name  # Only return the genre name
+    # def to_representation(self, instance):
+    #     return instance.name  # Only return the genre name
+
+
 
 class BookEditionListSerializer(serializers.HyperlinkedModelSerializer):
     publisher = serializers.CharField(source='publisher.name', read_only=True)

@@ -1,65 +1,117 @@
-.container {
-  width: 50%;
-  @include flex-container(column, 20px, center, space-between);
+.blur-container {
+  @include flex-container(column, $basic-gap, center, space-between);
   background-color: var(--section-bc-color);
-  padding: 40px 10px;
-  margin: 20px auto;
-
-  border-radius: 2rem;
-  box-shadow: 0 4px 10px var(--shadow-color);
-
-  @include text-base(var(--text-color), $text-font, $font-size: 20px);
-  text-align: center;
+  border-radius: $basic-border-radius;
+  box-shadow: $box-shadow;
   line-height: 200%;
+  margin: $basic-margin-y $basic-margin-x;
+  padding: $large-padding-container-md;
+  text-align: center;
+  width: 50%;
 
+  @include text-base(var(--text-color), $text-font, $font-size: $size-20);
+
+  @media (max-width: $md) {
+    gap: $small-gap;
+    font-size: $size-15;
+    padding: $large-padding-container-sm;
+    width: 90%;
+  }
+  @media (min-width: $md) and (max-width: $xl) {
+    width: 70%;
+  }
+  @media (min-width: $xxxl){
+    font-size: $size-25;
+  }
   .blur {
-    display: inline-block;
     background-color: var(--secondary-color);
-    color: transparent;
-    font-size: 20px;
     border-radius: 4px;
-    padding: 0 10px;
+    color: transparent;
+    display: inline-block;
     filter: blur(6px);
+    font-size: $size-20;
+    padding: 0 10px;
     transition: 0.3s ease-in-out;
     user-select: none;
+
+    @media (max-width: $md) {
+      font-size: $size-15;
+    }
+    @media (min-width: $xxxl){
+      font-size: $size-25;
+    }
   }
 }
 
 h2 {
-  @include text-base(var(--title-color), $text-font, $font-size: 40px);
-  text-align: center;
+  @include text-base(var(--title-color), $text-font, $font-size: $size-40);
   line-height: 200%;
+  text-align: center;
+
+  @media (max-width: $md) {
+    font-size: $size-30;
+  }
+  @media (min-width: $xxxl){
+    font-size: $size-50;
+  }
 }
 
 .community-grid {
   display: grid;
-  gap: 30px;
+  gap: $basic-gap;
   grid-template-columns: repeat(3, 1fr);
-  margin: 20px auto;
-  width: 85%;
+  margin: $basic-margin-y $basic-margin-x;
+  width: $smaller-container-width;
+
+  @media (max-width: $md) {
+    gap: $small-gap;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 5px $basic-margin-x;
+  }
 
   .community-grid--element {
-    @include flex-container(column, 20px, center, center);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px var(--shadow-color);
+    @include flex-container(column, $basic-gap, center, center);
     background-color: var(--section-bc-color);
-    padding: 40px 10px;
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+    padding: $large-padding-container-md;
 
     &:hover {
       transform: scale(1.1);
       transition: all 0.3s ease 0s;
+
+      @media (max-width: $md) {
+        transform: scale(1);
+      }
     }
 
+    @media (max-width: $md) {
+      gap: $small-gap;
+      padding: $large-padding-container-sm;
+    }
+    @media (min-width: $xxxl){
+      @include flex-container(column, $big-gap, center, center);
+    }
     img {
+      cursor: auto !important;
       height: 50px;
       object-fit: contain;
-      cursor: auto !important;
+      @media (min-width: $xxxl){
+        height: 80px;
+      }
     }
 
     p {
-      @include text-base(var(--text-color), $text-font, $font-size: 20px);
-      text-align: center;
+      @include text-base(var(--text-color), $text-font, $font-size: $size-20);
       line-height: 200%;
+      text-align: center;
+
+      @media (max-width: $md) {
+        font-size: $size-15;
+      }
+      @media (min-width: $xxxl){
+        font-size: $size-25;
+      }
     }
   }
 }
@@ -67,48 +119,120 @@ h2 {
 footer {
   @include flex-container(row, 0px, center, space-between);
   background-color: var(--footer-color);
-  padding: 40px 90px;
   margin-top: 40px;
+  padding: 40px 90px;
+
+  @media (max-width: $md) {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: $basic-gap;
+    margin-top: 30px;
+    padding: 10px 20px;
+  }
 
   ul {
     @include flex-container(row, 50px, center, space-between);
     list-style: none;
+
+    @media (max-width: $md) {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: $basic-gap;
+      margin-left: 30px;
+    }
+    @media (min-width: $md) and (max-width: $xl) {
+      flex-direction: column;
+      gap: $basic-gap;
+    }
   }
+
   li a {
-    @include text-base(var(--text-color), $font-weight: 300, $font-size: 15px);
+    @include text-base(var(--active-text-color), $font-weight: 300, $font-size: $size-15);
     text-decoration: none;
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+      font-size: $size-20;
+    }
+    @media (min-width: $xxxl){
+      font-size: $size-25;
+      font-weight: 400;
+    }
   }
 }
 
 .footer-logo {
-  @include flex-container(column, 0px, start, center);
+  @include flex-container(column, 0px, flex-start, center);
 
   div {
     @include flex-container(row, 0px, center, space-between);
   }
+
+  h3 {
+    @include text-base(var(--title-color), $font-weight: 300, $font-size: $size-45);
+
+    @media (max-width: $md) {
+      font-size: $size-35;
+    }
+    @media (min-width: $xxxl){
+      font-size: $size-50;
+    }
+  }
+
   img {
     @include img-base(45px, 30px);
+    @media (min-width: $xxxl){
+      @include img-base(55px);
+    }
   }
-  h3 {
-    @include text-base(var(--title-color), $font-weight: 300, $font-size: 45px);
-  }
+
   p {
-    padding-left: 30px;
-    @include text-base(var(--text-color), $font-weight: 300, $font-size: 15px);
+    @include text-base(var(--text-color), $font-weight: 300, $font-size: $size-15);
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+      font-size: $size-20;
+    }
+    @media (min-width: $xxxl){
+      font-size: $size-25;
+    }
+    padding-left: $small-padding;
   }
 }
 
 .auth-buttons {
-  @include flex-container(column, 10px, center, center);
+  @include flex-container(column, $small-gap, center, center);
+
+  @media (max-width: $md) {
+    flex-direction: row;
+    margin-left: 30px;
+  }
+
+  .login {
+    @include btn-base();
+    @include text-base(var(--active-text-color), $font-weight: 400, $font-size: $size-15);
+    background-color: var(--background-color);
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+      font-size: $size-20;
+    }
+    @media (max-width: $md) {
+      width: 100px;
+    }
+    @media (min-width: $xxxl){
+      font-size: $size-25;
+      padding: 15px 20px,
+    }
+  }
 
   .register {
+    @include btn-base();
+    @include text-base(var(--button-text-color), $font-weight: 400, $font-size: $size-15);
     background-color: var(--button-color);
-    @include text-base(var(--button-text-color), $font-weight: 400, $font-size: 15px);
-    @include btn-base();
-  }
-  .login {
-    background-color: var(--background-color);
-    @include text-base(var(--text-color), $font-weight: 400, $font-size: 15px);
-    @include btn-base();
+    @media (min-width: $xxl) and (max-width: $xxxl) {
+      font-size: $size-20;
+    }
+    @media (max-width: $md) {
+      width: 100px;
+    }
+    @media (min-width: $xxxl){
+      font-size: $size-25;
+      padding: 15px 20px,
+    }
   }
 }
